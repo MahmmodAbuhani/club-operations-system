@@ -1,0 +1,26 @@
+{
+  "name": "club-operations-system",
+  "version": "0.1.0",
+  "description": "Local PHP/MySQL reference system for database integrity, role-aware workflows, concurrency tests, and reproducible fictional evidence.",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MahmmodAbuhani/club-operations-system.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "erd": "mmdc -i docs/erd.mmd -o docs/erd.svg -b transparent",
+    "social-preview": "node scripts/build_social_preview.mjs",
+    "test:release": "node --test tests/release/*.test.mjs",
+    "test:a11y": "playwright test tests/e2e/accessibility.spec.js",
+    "evidence": "playwright test tests/e2e/evidence.spec.js"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.12.1",
+    "@mermaid-js/mermaid-cli": "11.16.0",
+    "@playwright/test": "1.62.1"
+  }
+}

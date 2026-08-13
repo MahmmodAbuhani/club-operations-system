@@ -1,0 +1,9 @@
+.git
+.github
+.DS_Store
+.env
+*.log
+docs/screenshots
+node_modules
+vendor
+tmp

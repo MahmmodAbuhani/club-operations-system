@@ -1,0 +1,11 @@
+.env
+.DS_Store
+vendor/
+node_modules/
+coverage/
+test-results/
+*.log
+demo/*.png
+demo/*.jpg
+demo/*.jpeg
+demo/*.webp

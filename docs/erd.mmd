@@ -1,0 +1,128 @@
+---
+config:
+  deterministicIds: true
+  deterministicIDSeed: sportlfc-relational-model
+  handDrawnSeed: 20260805
+  htmlLabels: false
+  look: classic
+---
+erDiagram
+    accTitle: Club Operations System relational model
+    accDescr: Fourteen base tables enforce registration, staffing, roster, and equipment relationships. FeesOwed and EquipmentFulfillment are derived views.
+
+    Person ||--o| Player : specializes
+    Person ||--o| Coach : specializes
+    Person ||--o| Admin : specializes
+    Player ||--o{ Registers : registers
+    Sport ||--o{ Registers : receives
+    Coach ||--o{ CanCoach : qualifies
+    Sport ||--o{ CanCoach : permits
+    Sport ||--o{ Team : organizes
+    Registers ||--o{ PlaysOn : authorizes
+    Team ||--o{ PlaysOn : rosters
+    CanCoach ||--o{ CoachesFor : authorizes
+    Team ||--o{ CoachesFor : staffed_by
+    Sport ||--o{ Requires : defines
+    UniformItem ||--o{ Requires : required_as
+    UniformItem ||--o{ UniformItemSize : sized_as
+    PlaysOn ||--o{ EquipmentOrder : places
+    Requires ||--o{ EquipmentOrder : validates
+    UniformItemSize ||--o{ EquipmentOrder : selects
+
+    Sport {
+      int SportID PK
+      varchar SportName
+      int MaxRosterSize
+      decimal RegistrationFee
+    }
+    Person {
+      int PersonID PK
+      varchar FirstName
+      varchar LastName
+      varchar Email UK
+      varchar Phone
+      varchar PasswordHash
+    }
+    Player {
+      int PersonID PK,FK
+      varchar GuardianName
+      date BirthDate
+    }
+    Coach {
+      int PersonID PK,FK
+      varchar CertificationLevel
+    }
+    Admin {
+      int PersonID PK,FK
+      varchar AdminTitle
+    }
+    Team {
+      int TeamID PK
+      varchar TeamName
+      int SportID FK
+      varchar AgeGroup
+      varchar Season
+      int CurrentRosterSize
+    }
+    UniformItem {
+      int ItemID PK
+      varchar ItemName
+      decimal UnitPrice
+    }
+    UniformItemSize {
+      int ItemID PK,FK
+      varchar SizeLabel PK
+    }
+    Registers {
+      int PersonID PK,FK
+      int SportID PK,FK
+      date RegistrationDate
+    }
+    CanCoach {
+      int PersonID PK,FK
+      int SportID PK,FK
+    }
+    PlaysOn {
+      int PersonID PK,FK
+      int TeamID PK,FK
+      int SportID FK
+      date JoinedAt
+      int UniformNumber
+    }
+    CoachesFor {
+      int PersonID PK,FK
+      int TeamID PK,FK
+      int SportID FK
+      varchar CoachRole
+      int HeadCoachTeamID UK
+    }
+    Requires {
+      int SportID PK,FK
+      int ItemID PK,FK
+      int MinQuantity
+    }
+    EquipmentOrder {
+      int OrderID PK
+      int PersonID FK
+      int TeamID FK
+      int SportID FK
+      int ItemID FK
+      varchar SizeLabel FK
+      int Quantity
+      date OrderedAt
+    }
+    FeesOwed {
+      string ObjectType "DERIVED VIEW"
+      int PersonID
+      decimal AmountOwed
+    }
+    EquipmentFulfillment {
+      string ObjectType "DERIVED VIEW"
+      int PersonID
+      int TeamID
+      int SportID
+      int ItemID
+      int RequiredQuantity
+      int OrderedQuantity
+      int OutstandingQuantity
+    }
