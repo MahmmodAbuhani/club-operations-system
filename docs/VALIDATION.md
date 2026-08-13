@@ -22,15 +22,16 @@ The MySQL and PHP images were resolved by immutable digest. `make verify-image` 
 make verify
 ```
 
-On August 13, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs seven dependency-ordered stages:
+On August 13, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs eight dependency-ordered stages:
 
 1. Compose validation, PHP lint, all repository shell-script syntax checks, and public-surface assertions.
-2. Lockfile install, exact Chromium availability, dependency audit, and the portable release-contract tests discovered from `tests/release/*.test.mjs`.
-3. Fresh isolated MySQL direct-SQL invariant tests.
-4. Fresh isolated MySQL two-session concurrency races.
-5. Fresh Docker equipment-fulfillment HTTP flow.
-6. Fresh Docker session, route, CSRF, authorization, and role-flow tests.
-7. Fresh Docker Playwright, axe, keyboard-focus, and 320 CSS-pixel reflow checks.
+2. Lockfile install, exact Chromium availability, dependency audit, and the portable release-contract tests discovered from `tests/release/*.test.mjs`, including the static walkthrough release contracts.
+3. Four walkthrough browser checks covering its static boundary, local-only runtime requests, axe scan, scenario data, evidence provenance, keyboard tabs, and 320 CSS-pixel walkthrough reflow.
+4. Fresh isolated MySQL direct-SQL invariant tests.
+5. Fresh isolated MySQL two-session concurrency races.
+6. Fresh Docker equipment-fulfillment HTTP flow.
+7. Fresh Docker session, route, CSRF, authorization, and role-flow tests.
+8. Fresh Docker Playwright, axe, keyboard-focus, and 320 CSS-pixel application reflow checks.
 
 Every Docker test project removes its containers, network, and data volume on exit, so suites do not share database state.
 
@@ -57,6 +58,7 @@ Three synchronized two-session races each produced exactly one valid winner: the
 - Tampered equipment and coaching mutations returned a denial and left database state unchanged.
 - A named `roster_capacity_exceeded` trigger conflict returned the friendly roster-capacity message without a write, while an unrelated trigger failure retained the generic 500 response.
 - Unknown routes returned 404, wrong methods returned 405, invalid CSRF returned 403, logout was POST-only, and the session cookie was cleared.
+- Four static walkthrough browser checks confirmed the no-backend disclosure, no external runtime requests, zero automated WCAG A or AA violations, Arrow key plus Home and End tab behavior, repository visual provenance, and 320 CSS-pixel reflow.
 - Four Playwright pages received automated axe scans. The login test also checked visible keyboard focus, and a fifth separate test checked 320 CSS-pixel reflow.
 
 Automated accessibility checks do not replace manual assistive-technology testing. A screen-reader pass remains outside the completed checks.
@@ -72,6 +74,14 @@ The local application was inspected on August 13, 2026 after a fresh Docker fixt
 - Direct focus inspection on the login email control showed the documented 3-pixel amber outline with a 3-pixel offset.
 - The browser console contained no warning or error entries during the inspected flows.
 - All four regenerated application screenshots and the social preview were inspected at original resolution for clipping, legibility, real personal data, credentials, browser chrome, and misleading deployment language.
+
+The static walkthrough was inspected separately in Chrome at a normal desktop viewport and at 320 by 800 CSS pixels.
+
+- The first screen identified the artifact as a static evidence walkthrough, kept the no-backend boundary visible, and exposed both primary review actions without scrolling at the inspected desktop viewport.
+- Changing from equipment fulfillment to invariant handling updated the rule, expected outcome, limitation, source links, authentic fixture visual, caption, and SHA-256 record.
+- Arrow-key selection moved focus with a visible amber outline and updated the selected tab and panel relationship.
+- At 320 CSS pixels, the document client width and scroll width both measured 320; the opening reflowed to one column without clipped text.
+- The walkthrough console contained no warning or error entries during the inspected flow.
 
 A full manual keyboard traversal, an actual 400 percent browser-zoom session, and a screen-reader session were not performed. The 320 CSS-pixel inspection is narrow-width reflow evidence, not a substitute for those checks. Automated axe results and the checks above do not establish assistive-technology compatibility.
 

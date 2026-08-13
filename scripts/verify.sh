@@ -8,7 +8,7 @@ command -v docker >/dev/null
 command -v node >/dev/null
 command -v npm >/dev/null
 
-printf '[1/7] Static configuration and PHP syntax\n'
+printf '[1/8] Static configuration and PHP syntax\n'
 docker compose config --quiet
 if [[ -n "${SPORTLFC_PHP_BIN:-}" ]]; then
     command -v "$SPORTLFC_PHP_BIN" >/dev/null
@@ -27,7 +27,7 @@ fi
 find scripts tests -type f -name '*.sh' -print0 | xargs -0 -n1 bash -n
 tests/release/public_surface.sh
 
-printf '[2/7] Locked development dependencies\n'
+printf '[2/8] Locked development dependencies\n'
 npm ci --silent --prefer-offline
 browser_path="$(node -e "process.stdout.write(require('playwright').chromium.executablePath())")"
 if [[ ! -x "$browser_path" ]]; then
@@ -40,20 +40,23 @@ else
 fi
 npm run test:release
 
-printf '[3/7] Direct SQL invariant tests\n'
+printf '[3/8] Static evidence walkthrough\n'
+npm run test:walkthrough
+
+printf '[4/8] Direct SQL invariant tests\n'
 tests/sql/invariants.sh
 
-printf '[4/7] Two-session concurrency tests\n'
+printf '[5/8] Two-session concurrency tests\n'
 tests/sql/concurrency.sh
 
-printf '[5/7] Equipment HTTP flow\n'
+printf '[6/8] Equipment HTTP flow\n'
 tests/http/fulfillment.sh
 
-printf '[6/7] Security and role HTTP flows\n'
+printf '[7/8] Security and role HTTP flows\n'
 tests/http/security.sh
 tests/http/roles.sh
 
-printf '[7/7] Accessibility and narrow-viewport verification\n'
+printf '[8/8] Accessibility and narrow-viewport verification\n'
 tests/http/accessibility.sh
 
 printf 'Club Operations System complete verification passed.\n'

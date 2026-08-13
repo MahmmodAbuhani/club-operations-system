@@ -85,6 +85,15 @@ test('public evidence describes repository CI without implying deployment', asyn
   assert.match(readme, /No production users/u);
 });
 
+test('validation record describes the complete eight-stage verification path', async () => {
+  const validation = await readPublicFile('docs/VALIDATION.md');
+
+  assert.match(validation, /performs eight dependency-ordered stages/u);
+  assert.match(validation, /static walkthrough release contracts/u);
+  assert.match(validation, /four walkthrough browser checks/iu);
+  assert.match(validation, /320 CSS-pixel walkthrough reflow/u);
+});
+
 test('security policy routes private reports without promising production support', async () => {
   const policy = await readPublicFile('SECURITY.md');
   const plainPolicy = policy.replace(/[*_`]/gu, '');

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="A static interactive evidence walkthrough for the Club Operations System local PHP and MySQL reference project."
+    >
+    <title>Evidence walkthrough | Club Operations System</title>
+    <link rel="stylesheet" href="./walkthrough.css">
+    <script type="module" src="./walkthrough.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <a class="wordmark" href="https://github.com/MahmmodAbuhani/club-operations-system">
+        Club Operations System
+      </a>
+      <span class="boundary-label">Static page, no live backend</span>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Interactive evidence walkthrough</p>
+          <h1 id="page-title">Trace four system rules from interface to executable proof.</h1>
+          <p class="author-opening">
+            I built this walkthrough to make the project easier to inspect without disguising a static page as the application. It organizes real source, tests, diagrams, and fixture captures from the local Docker/PHP/MySQL system.
+          </p>
+          <p class="boundary-copy">
+            The page changes only the evidence shown below. It does not connect to the PHP/MySQL application, submit data, run database writes, or collect visitor information.
+          </p>
+          <nav class="hero-actions" aria-label="Primary evidence routes">
+            <a class="button primary" href="#scenarios">Start the walkthrough</a>
+            <a class="button secondary" href="https://github.com/MahmmodAbuhani/club-operations-system#run-it-locally">Run the actual system locally</a>
+          </nav>
+        </div>
+
+        <aside class="route-card" aria-labelledby="route-title">
+          <p class="route-time">90 seconds</p>
+          <h2 id="route-title">A direct review path</h2>
+          <ol>
+            <li><a href="#boundary">Confirm the architecture boundary</a></li>
+            <li><a href="#scenarios">Choose one rule and inspect its proof</a></li>
+            <li><a href="#verification">Open the verification and rights records</a></li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="boundary-section" id="boundary" aria-labelledby="boundary-title">
+        <div class="section-heading">
+          <p class="eyebrow">Architecture boundary</p>
+          <h2 id="boundary-title">The walkthrough points to the system. It does not replace it.</h2>
+        </div>
+        <div class="flow" aria-label="Walkthrough architecture flow">
+          <article>
+            <span class="flow-number" aria-hidden="true">01</span>
+            <h3>Static walkthrough</h3>
+            <p>Local HTML, CSS, and JavaScript select a fixed evidence record.</p>
+          </article>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <article>
+            <span class="flow-number" aria-hidden="true">02</span>
+            <h3>Inspectable evidence</h3>
+            <p>Every rule links to repository source, tests, the ERD, or a fixture capture.</p>
+          </article>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <article>
+            <span class="flow-number" aria-hidden="true">03</span>
+            <h3>Actual local system</h3>
+            <p>Docker runs PHP 8.3 and MySQL 8.0 for executable verification.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="scenario-section" id="scenarios" aria-labelledby="scenarios-title">
+        <div class="section-heading scenario-heading">
+          <div>
+            <p class="eyebrow">Four verified scenarios</p>
+            <h2 id="scenarios-title">Choose a rule, then follow its evidence.</h2>
+          </div>
+          <p id="scenario-progress" class="scenario-progress" aria-live="polite">Scenario 1 of 4</p>
+        </div>
+
+        <div class="scenario-tabs" role="tablist" aria-label="System evidence scenarios">
+          <button id="tab-role-authorization" role="tab" aria-selected="true" aria-controls="scenario-panel" tabindex="0" data-scenario="role-authorization">Role authorization</button>
+          <button id="tab-roster-concurrency" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1" data-scenario="roster-concurrency">Roster concurrency</button>
+          <button id="tab-equipment-fulfillment" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1" data-scenario="equipment-fulfillment">Equipment fulfillment</button>
+          <button id="tab-invariant-handling" role="tab" aria-selected="false" aria-controls="scenario-panel" tabindex="-1" data-scenario="invariant-handling">Invariant handling</button>
+        </div>
+
+        <article
+          class="scenario-panel"
+          id="scenario-panel"
+          role="tabpanel"
+          tabindex="0"
+          aria-labelledby="tab-role-authorization"
+        >
+          <div class="scenario-copy">
+            <p id="scenario-kicker" class="scenario-kicker"></p>
+            <h3 id="scenario-title"></h3>
+            <dl class="evidence-definition">
+              <div>
+                <dt>Rule</dt>
+                <dd id="scenario-rule"></dd>
+              </div>
+              <div>
+                <dt>Expected outcome</dt>
+                <dd id="scenario-expected"></dd>
+              </div>
+              <div>
+                <dt>Limitation</dt>
+                <dd id="scenario-limitation"></dd>
+              </div>
+            </dl>
+            <div class="evidence-links">
+              <h4>Open the proof</h4>
+              <ul id="scenario-evidence"></ul>
+            </div>
+          </div>
+
+          <figure class="scenario-visual">
+            <div class="visual-frame">
+              <img id="scenario-image" src="./screenshots/02-riley-dashboard.png" alt="">
+            </div>
+            <figcaption>
+              <span id="scenario-caption"></span>
+              <span class="hash-line">SHA-256 <code id="scenario-hash"></code></span>
+            </figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <section class="verification-section" id="verification" aria-labelledby="verification-title">
+        <div class="verification-copy">
+          <p class="eyebrow">Reproduce the evidence</p>
+          <h2 id="verification-title">The repository keeps the proof path executable.</h2>
+          <p>
+            <code>make verify</code> rebuilds isolated fictional fixtures and runs schema, concurrency, HTTP, security, and accessibility checks. <code>make verify-image</code> confirms the pinned database image supports the documented architectures.
+          </p>
+        </div>
+        <nav class="proof-grid" aria-label="Project verification and boundary records">
+          <a href="https://github.com/MahmmodAbuhani/club-operations-system/blob/main/docs/INVARIANTS.md"><strong>Invariant matrix</strong><span>Rule, enforcement, interface, proof</span></a>
+          <a href="https://github.com/MahmmodAbuhani/club-operations-system/blob/main/docs/erd.svg"><strong>Relational model</strong><span>Generated fourteen-table ERD</span></a>
+          <a href="https://github.com/MahmmodAbuhani/club-operations-system/blob/main/docs/SCREENSHOTS.md"><strong>Interface evidence</strong><span>Capture commands and scope</span></a>
+          <a href="https://github.com/MahmmodAbuhani/club-operations-system/blob/main/docs/VISUAL_HASHES.md"><strong>Visual hashes</strong><span>SHA-256 provenance ledger</span></a>
+          <a href="https://github.com/MahmmodAbuhani/club-operations-system/blob/main/docs/VALIDATION.md"><strong>Verification record</strong><span>Environment, commands, results</span></a>
+          <a href="https://github.com/MahmmodAbuhani/club-operations-system/blob/main/docs/DATA.md"><strong>Data and rights</strong><span>Fictional fixture and use boundary</span></a>
+        </nav>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Club Operations System is a local reference project built with deterministic fictional data. It is not deployed, is not affiliated with Liverpool FC or any real organization, and does not claim production operation.
+      </p>
+      <a href="https://github.com/MahmmodAbuhani/club-operations-system">Inspect the complete repository</a>
+    </footer>
+  </body>
+</html>
