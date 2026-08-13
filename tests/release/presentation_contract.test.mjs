@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -19,6 +19,17 @@ function markdownSection(markdown, heading) {
   return lines.slice(start + 1, end).join('\n').trim();
 }
 
+function dependabotDirectories(config, ecosystem) {
+  return config
+    .split(/\n(?=\s{2}- package-ecosystem: )/u)
+    .filter((block) => block.includes(`package-ecosystem: ${ecosystem}`))
+    .map((block) => {
+      const directory = block.match(/^\s+directory:\s*(\S+)\s*$/mu);
+      assert.ok(directory, `${ecosystem} updater is missing a directory`);
+      return directory[1];
+    });
+}
+
 test('public package metadata uses the intended repository identity', async () => {
   const packageJson = JSON.parse(await readPublicFile('package.json'));
 
@@ -30,6 +41,18 @@ test('public package metadata uses the intended repository identity', async () =
   assert.equal(
     packageJson.repository.url,
     'git+https://github.com/MahmmodAbuhani/club-operations-system.git'
+  );
+});
+
+test('every Docker updater targets a directory with a real Dockerfile', async () => {
+  const dependabot = await readPublicFile('.github/dependabot.yml');
+  const dockerDirectories = dependabotDirectories(dependabot, 'docker');
+
+  assert.deepEqual(dockerDirectories, ['/web']);
+  await Promise.all(
+    dockerDirectories.map((directory) =>
+      access(path.join(projectRoot, directory.replace(/^\//u, ''), 'Dockerfile'))
+    )
   );
 });
 
