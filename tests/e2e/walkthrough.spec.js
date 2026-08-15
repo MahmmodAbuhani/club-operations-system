@@ -24,6 +24,35 @@ test('walkthrough states its boundary and loads only local runtime resources', a
   expect(externalRequests).toEqual([]);
 });
 
+test('desktop opening exposes all four scenarios and a working evidence path', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+
+  const hero = page.locator('.hero');
+  for (const name of [
+    'Role authorization',
+    'Roster concurrency',
+    'Equipment fulfillment',
+    'Invariant handling'
+  ]) {
+    const label = hero.getByText(name, { exact: true });
+    await expect(label).toBeVisible();
+    const box = await label.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box.y + box.height).toBeLessThanOrEqual(900);
+  }
+
+  const evidencePath = hero.getByRole('link', { name: 'Open the scenario evidence' });
+  await expect(evidencePath).toBeVisible();
+  const pathBox = await evidencePath.boundingBox();
+  expect(pathBox).not.toBeNull();
+  expect(pathBox.y + pathBox.height).toBeLessThanOrEqual(900);
+
+  await evidencePath.click();
+  await expect(page).toHaveURL(/#scenarios$/u);
+  await expect(page.getByRole('tab', { name: 'Role authorization' })).toBeVisible();
+});
+
 test('walkthrough has no automated WCAG A or AA violations', async ({ page }) => {
   await page.goto('/');
   const results = await new AxeBuilder({ page })

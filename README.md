@@ -12,11 +12,11 @@ The preview is built from an authenticated local fixture capture. Its source and
 
 ## 90-second guide
 
-Prefer a guided route? Open the browser-native [`interactive evidence walkthrough`](docs/index.html). It is a static navigation layer over the source, tests, ERD, and authentic fixture captures; it does not connect to or imitate a live backend.
+The static evidence walkthrough is prepared and verified locally, but GitHub Pages is not enabled and the artifact is not hosted. If Pages is enabled later, its route will be `https://mahmmodabuhani.github.io/club-operations-system/`. For the current repository, use the four evidence paths below or run `npm run walkthrough:serve` to inspect the walkthrough locally.
 
 | Time | Follow the evidence |
 |---|---|
-| 0-15 seconds | Use the [`interactive evidence walkthrough`](docs/index.html), or read the [`invariant matrix`](docs/INVARIANTS.md) and scan the full [`relational model`](docs/erd.svg). |
+| 0-15 seconds | Choose one current path: [`Role authorization`](tests/http/roles.sh), [`Roster concurrency`](tests/sql/concurrency.sh), [`Equipment fulfillment`](tests/http/fulfillment.sh), or [`Invariant handling`](docs/INVARIANTS.md). Scan the full [`relational model`](docs/erd.svg) for context. |
 | 15-35 seconds | Inspect the capacity trigger in [`sql/01_schema.sql`](sql/01_schema.sql), the synchronized races in [`tests/sql/concurrency.sh`](tests/sql/concurrency.sh), and the role denials in [`tests/http/roles.sh`](tests/http/roles.sh). |
 | 35-55 seconds | Open the authentic [`interface evidence`](docs/SCREENSHOTS.md) and its [`visual hash ledger`](docs/VISUAL_HASHES.md). |
 | 55-75 seconds | Review the complete [`verification workflow`](.github/workflows/ci.yml), then run `make verify` and `make verify-image` locally. |

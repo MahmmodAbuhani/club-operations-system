@@ -30,6 +30,12 @@ function dependabotDirectories(config, ecosystem) {
     });
 }
 
+function markdownLinks(markdown) {
+  return [...markdown.matchAll(/\[([^\]]+)\]\(([^)\s]+)(?:\s+"[^"]*")?\)/gu)].map(
+    ([, label, href]) => ({ label, href })
+  );
+}
+
 test('public package metadata uses the intended repository identity', async () => {
   const packageJson = JSON.parse(await readPublicFile('package.json'));
 
@@ -72,6 +78,30 @@ test('README provides an authored abstract, proof route, evidence labels, and cl
   assert.doesNotMatch(readme, /^## Additional experience$/mu);
 });
 
+test('README keeps the unhosted walkthrough route distinct from repository source', async () => {
+  const readme = await readPublicFile('README.md');
+  const guide = markdownSection(readme, '90-second guide');
+  const links = markdownLinks(guide);
+
+  assert.equal(
+    links.some(({ href }) => href === 'docs/index.html'),
+    false,
+    'the recruiter route must not open the walkthrough source file in GitHub'
+  );
+  assert.equal(
+    links.some(({ href }) => href === 'https://mahmmodabuhani.github.io/club-operations-system/'),
+    false,
+    'the intended Pages route must not be linked before it is hosted'
+  );
+  assert.match(guide, /GitHub Pages is not enabled/u);
+  assert.match(guide, /not hosted/u);
+  assert.match(guide, /https:\/\/mahmmodabuhani\.github\.io\/club-operations-system\//u);
+  assert.match(guide, /Role authorization/u);
+  assert.match(guide, /Roster concurrency/u);
+  assert.match(guide, /Equipment fulfillment/u);
+  assert.match(guide, /Invariant handling/u);
+});
+
 test('public evidence describes repository CI without implying deployment', async () => {
   const readme = await readPublicFile('README.md');
   const validation = await readPublicFile('docs/VALIDATION.md');
@@ -90,7 +120,7 @@ test('validation record describes the complete eight-stage verification path', a
 
   assert.match(validation, /performs eight dependency-ordered stages/u);
   assert.match(validation, /static walkthrough release contracts/u);
-  assert.match(validation, /four walkthrough browser checks/iu);
+  assert.match(validation, /five walkthrough browser checks/iu);
   assert.match(validation, /320 CSS-pixel walkthrough reflow/u);
 });
 

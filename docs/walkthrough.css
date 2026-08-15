@@ -196,11 +196,29 @@ h1 {
   font-size: 1.35rem;
 }
 
-.route-card ol {
+.scenario-preview {
   display: grid;
-  gap: 0.8rem;
-  margin: 0;
-  padding-left: 1.2rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.55rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.scenario-preview li {
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  padding: 0.55rem 0.65rem;
+  background: var(--page);
+  color: var(--ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.route-link {
+  font-size: 0.84rem;
+  font-weight: 750;
 }
 
 .boundary-section,
