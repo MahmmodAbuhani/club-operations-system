@@ -1,6 +1,6 @@
 # Validation record
 
-This verification record began with an isolated local checkout on August 11, 2026 and was refreshed on August 15, 2026 after the walkthrough route and opening were repaired and the complete native verification command was rerun. The checked-in GitHub Actions workflow is configured to execute the same repository command on pushes and pull requests. No hosted run is claimed for this snapshot. Local checks do not establish a deployment or production operating record. Later code changes require a new exact-revision verification before their results are described as current.
+This verification record began with an isolated local checkout on August 11, 2026 and was refreshed on August 15, 2026 after the walkthrough route and opening were repaired and the complete native verification command was rerun. The [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted verification by commit, and the [static evidence walkthrough is hosted on GitHub Pages](https://mahmmodabuhani.github.io/club-operations-system/). The PHP/MySQL system remains local. Local checks and static hosting do not establish a production operating record. Later code changes require a new exact-revision verification before their results are described as current.
 
 ## Environment
 
@@ -92,4 +92,4 @@ A full manual keyboard traversal, an actual 400 percent browser-zoom session, an
 
 The repository includes a top-level security policy that directs reports through GitHub's private **Report a vulnerability** form when that control is available. Source text does not enable or prove a remote security setting.
 
-Passing local and fresh-clone checks apply only to the exact revision and stated local environment. GitHub Actions outcomes apply only to their recorded commit SHA. Branch rules, security settings, repository metadata, deployment, production operation, and release creation require separate evidence.
+Passing local and fresh-clone checks apply only to the exact revision and stated local environment. GitHub Actions outcomes apply only to their recorded commit SHA. GitHub Pages hosts only the static evidence walkthrough. Branch rules, security settings, repository metadata, PHP/MySQL deployment, production operation, and release creation require separate evidence.

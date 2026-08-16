@@ -78,7 +78,7 @@ test('README provides an authored abstract, proof route, evidence labels, and cl
   assert.doesNotMatch(readme, /^## Additional experience$/mu);
 });
 
-test('README keeps the unhosted walkthrough route distinct from repository source', async () => {
+test('README routes visitors to the hosted walkthrough instead of repository source', async () => {
   const readme = await readPublicFile('README.md');
   const guide = markdownSection(readme, '90-second guide');
   const links = markdownLinks(guide);
@@ -90,28 +90,38 @@ test('README keeps the unhosted walkthrough route distinct from repository sourc
   );
   assert.equal(
     links.some(({ href }) => href === 'https://mahmmodabuhani.github.io/club-operations-system/'),
-    false,
-    'the intended Pages route must not be linked before it is hosted'
+    true,
+    'the recruiter route must open the hosted static walkthrough'
   );
-  assert.match(guide, /GitHub Pages is not enabled/u);
-  assert.match(guide, /not hosted/u);
-  assert.match(guide, /https:\/\/mahmmodabuhani\.github\.io\/club-operations-system\//u);
+  assert.match(guide, /static evidence walkthrough/u);
+  assert.match(guide, /GitHub Pages/u);
+  assert.doesNotMatch(guide, /GitHub Pages is not enabled/u);
+  assert.doesNotMatch(guide, /artifact is not hosted/u);
   assert.match(guide, /Role authorization/u);
   assert.match(guide, /Roster concurrency/u);
   assert.match(guide, /Equipment fulfillment/u);
   assert.match(guide, /Invariant handling/u);
 });
 
-test('public evidence describes repository CI without implying deployment', async () => {
+test('public evidence distinguishes hosted static proof from the local PHP and MySQL system', async () => {
   const readme = await readPublicFile('README.md');
   const validation = await readPublicFile('docs/VALIDATION.md');
+  const walkthrough = await readPublicFile('docs/index.html');
 
   assert.match(readme, /\.github\/workflows\/ci\.yml/u);
-  assert.match(readme, /No hosted run is claimed for this snapshot/u);
-  assert.match(validation, /No hosted run is claimed for this snapshot/u);
+  assert.match(readme, /https:\/\/github\.com\/MahmmodAbuhani\/club-operations-system\/actions\/workflows\/ci\.yml/u);
+  assert.match(readme, /https:\/\/mahmmodabuhani\.github\.io\/club-operations-system\//u);
+  assert.match(readme, /PHP\/MySQL application remains local/u);
+  assert.match(validation, /static evidence walkthrough is hosted on GitHub Pages/u);
+  assert.match(validation, /PHP\/MySQL system remains local/u);
+  assert.match(walkthrough, /hosted page is a static evidence layer/u);
+  assert.match(walkthrough, /PHP\/MySQL system remains local/u);
+  assert.doesNotMatch(readme, /No hosted run is claimed for this snapshot/u);
+  assert.doesNotMatch(validation, /No hosted run is claimed for this snapshot/u);
+  assert.doesNotMatch(walkthrough, /It is not deployed/u);
   assert.doesNotMatch(readme, /sportlfc-data-systems-portfolio/u);
   assert.doesNotMatch(validation, /11 portable release regression tests/u);
-  assert.match(readme, /No hosted environment/u);
+  assert.doesNotMatch(readme, /No hosted environment/u);
   assert.match(readme, /No production users/u);
 });
 

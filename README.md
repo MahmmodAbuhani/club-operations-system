@@ -4,7 +4,7 @@ Welcome to Club Operations System. I built it to examine a practical systems que
 
 ## Abstract
 
-Club Operations System is a local PHP 8.3 and MySQL 8.0 reference system for a fictional sports program. It places core rules in relational constraints, indexes, triggers, views, and least-privilege grants, then exercises those rules through role-aware application flows. Synchronized SQL races test final-slot, head-coach, and uniform-number contention; HTTP suites test authorization and state preservation; Playwright captures authentic fixture screens and checks accessibility and reflow. The repository includes a schema-backed ERD, reproducible evidence commands, and deterministic fictional data. It is not affiliated with Liverpool FC or any real organization, and it is not deployed or operated as a production service.
+Club Operations System is a local PHP 8.3 and MySQL 8.0 reference system for a fictional sports program. It places core rules in relational constraints, indexes, triggers, views, and least-privilege grants, then exercises those rules through role-aware application flows. Synchronized SQL races test final-slot, head-coach, and uniform-number contention; HTTP suites test authorization and state preservation; Playwright captures authentic fixture screens and checks accessibility and reflow. The repository includes a schema-backed ERD, reproducible evidence commands, and deterministic fictional data. Its static evidence walkthrough is hosted on GitHub Pages; the PHP/MySQL application remains local and is not operated as a production service. The project is not affiliated with Liverpool FC or any real organization.
 
 ![Club Operations System social preview pairing the local system summary with a fictional equipment fulfillment capture](docs/social-preview.png)
 
@@ -12,7 +12,7 @@ The preview is built from an authenticated local fixture capture. Its source and
 
 ## 90-second guide
 
-The static evidence walkthrough is prepared and verified locally, but GitHub Pages is not enabled and the artifact is not hosted. If Pages is enabled later, its route will be `https://mahmmodabuhani.github.io/club-operations-system/`. For the current repository, use the four evidence paths below or run `npm run walkthrough:serve` to inspect the walkthrough locally.
+Open the [static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
 
 | Time | Follow the evidence |
 |---|---|
@@ -98,8 +98,8 @@ Stop the containers with `make down`.
 |---|---|
 | Local verification | [`docs/VALIDATION.md`](docs/VALIDATION.md) records the dated environment, commands, and outcomes. |
 | Generated artifacts | [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md), [`docs/SOCIAL_PREVIEW.md`](docs/SOCIAL_PREVIEW.md), and [`docs/erd.svg`](docs/erd.svg) each have a source and regeneration path. |
-| Continuous integration | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) defines the complete verification job for pushes and pull requests. No hosted run is claimed for this snapshot. |
-| Deployment | No hosted environment was created or tested. |
+| Continuous integration | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) defines the complete verification job for pushes and pull requests; [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted outcomes by commit. |
+| Static deployment | The [interactive evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is hosted by GitHub Pages from `main` `/docs`. The PHP/MySQL application remains local and is not a hosted service. |
 | Production operation | No production users, real data, reliability record, or incident-response record exists. |
 
 ## Architecture
@@ -121,7 +121,7 @@ The application receives ordinary data access through the limited runtime princi
 ## Limits, data, rights, and security
 
 - **Fictional data:** [`sql/02_seed.sql`](sql/02_seed.sql) is a deterministic, hand-authored fixture. Names are demonstration identities, email addresses use `.test`, and phone numbers use fictional 555 values. [`docs/DATA.md`](docs/DATA.md) records the full data contract.
-- **Local application:** Club Operations System does not collect payments, send messages, manage real minors' data, or provide a hosted service. Set `SPORTLFC_COOKIE_SECURE=1` only when serving through HTTPS.
+- **Local application:** The PHP/MySQL application does not collect payments, send messages, manage real minors' data, or expose a hosted service. Set `SPORTLFC_COOKIE_SECURE=1` only when serving it through HTTPS.
 - **Accessibility boundary:** Automated checks do not replace a screen-reader pass, 400 percent zoom inspection, or a full keyboard walkthrough. These manual checks remain separate from the executable suite.
 - **Security reporting:** When the repository's Security tab offers **Report a vulnerability**, use that private form. Do not place undisclosed security details, credentials, or real personal data in a public issue. See [`SECURITY.md`](SECURITY.md).
 - **Rights:** The fixture, documentation, Mermaid source, generated ERD, deterministic outputs, and local-fixture screenshots are repository-authored material covered by the repository license. No trademark or real-club affiliation rights are asserted or granted.
@@ -132,4 +132,4 @@ Unless a file states otherwise, the [MIT License](LICENSE) applies to repository
 
 ## Intended use
 
-Club Operations System is intended for local inspection of relational integrity, concurrency behavior, least-privilege access, and role-aware application boundaries. It is not a deployed service or evidence of production operation. Start with the [`invariant matrix`](docs/INVARIANTS.md), then run `make verify` to reproduce the executable checks against a fresh fictional fixture.
+Club Operations System is intended for inspection of relational integrity, concurrency behavior, least-privilege access, and role-aware application boundaries. The static walkthrough is deployed as an evidence layer; the PHP/MySQL application is not a deployed service or evidence of production operation. Start with the [`invariant matrix`](docs/INVARIANTS.md), then run `make verify` to reproduce the executable checks against a fresh fictional fixture.
