@@ -24,7 +24,7 @@ export const scenarios = [
       alt: 'Fictional Riley Bennett dashboard with Player and Coach navigation visible',
       caption:
         'Authenticated fictional fixture showing the navigation produced for a person who has both Player and Coach roles. It shows visible state, not the rejected-request proof.',
-      sha256: 'dec403eb55738c50c85d0bf0cf8eb1fc303577b96827c7ee13d8a192bf4027eb'
+      sha256: '4efad0cd58efb410f071155058db5aad025feb3862dd409dd5a05d96e9fb1014'
     }
   },
   {
@@ -72,7 +72,7 @@ export const scenarios = [
       alt: 'Fictional equipment fulfillment screen with required, ordered, outstanding, and status values',
       caption:
         'Authenticated fictional fixture showing cumulative fulfillment values from the derived view. The SQL and HTTP suites establish the transitions and preserved history.',
-      sha256: '5b1962ec42d502ff202001b9abfedef432771ccbcbc8408f4f49c83dbfe08c6e'
+      sha256: '7cb699aa2546782bcd01e43a981e5b238ecb1c59ebbdbb53fb825889adaf9a8e'
     }
   },
   {
@@ -96,7 +96,7 @@ export const scenarios = [
       alt: 'Fictional admin analytics screen generated from the validated local relational fixture',
       caption:
         'Authenticated fixture analytics derived from valid rows after schema checks. A screen cannot show rejected writes, so the negative SQL assertions provide that evidence.',
-      sha256: '66fb8ad4ae8cb79a79fe48fa1e9705312a8ca67eff33b239e77166a582169e94'
+      sha256: '19e5cd1dc295e0222cdcec278853acacbe77f2fc9455575f74954efe76a134d5'
     }
   }
 ];

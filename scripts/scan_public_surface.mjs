@@ -25,6 +25,9 @@ const VISUAL_ARTIFACTS = [
   'docs/screenshots/04-admin-analytics.png',
   'docs/social-preview.png'
 ];
+const APPROVED_PUBLIC_DASH_PHRASES = [
+  'Interactive Python demo — fixture-backed; not the PHP/MySQL runtime.'
+];
 
 const COPY_POLICIES = [
   {
@@ -379,7 +382,10 @@ export async function scanRepository(repositoryRoot, options = {}) {
 
     if (PROSE_EXTENSIONS.has(path.extname(filePath).toLowerCase())) {
       for (const policy of COPY_POLICIES) {
-        if (policy.pattern.test(text)) {
+        const policyText = policy.code === 'plain-language'
+          ? APPROVED_PUBLIC_DASH_PHRASES.reduce((value, phrase) => value.replaceAll(phrase, ''), text)
+          : text;
+        if (policy.pattern.test(policyText)) {
           addFinding(findings, seen, policy.code, relativePath, policy.message);
         }
       }

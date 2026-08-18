@@ -27,6 +27,32 @@ test('login has no automated WCAG A or AA violations and visible keyboard focus'
   expect(outlineStyle).not.toBe('none');
 });
 
+test('role navigation marks the current page for orientation', async ({ page }) => {
+  await login(page, 'riley.bennett@example.test');
+  await expect(page.getByRole('link', { name: 'Home' })).toHaveAttribute('aria-current', 'page');
+  await page.getByRole('link', { name: 'Order Equipment' }).click();
+  await expect(page.getByRole('link', { name: 'Order Equipment' })).toHaveAttribute('aria-current', 'page');
+  await expect(page.getByRole('link', { name: 'Home' })).not.toHaveAttribute('aria-current', 'page');
+});
+
+test('admin reports use reader-facing labels and definitions', async ({ page }) => {
+  await login(page, 'priya.nair@example.test');
+  await page.getByRole('link', { name: 'Reports' }).click();
+  await expect(page.getByText('Registered players', { exact: true })).toBeVisible();
+  await expect(page.getByText('Average fee owed', { exact: true })).toBeVisible();
+  await expect(page.getByText('Estimated value', { exact: true })).toBeVisible();
+  await expect(page.getByText('RegisteredPlayers', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('PlayerTeamFeeRows', { exact: true })).toHaveCount(0);
+});
+
+test('data tables expose a keyboard-scroll region', async ({ page }) => {
+  await login(page, 'priya.nair@example.test');
+  await page.getByRole('link', { name: 'Reports' }).click();
+  const tables = page.getByRole('region', { name: 'Scrollable data table' });
+  await expect(tables).toHaveCount(5);
+  await expect(tables.first()).toHaveAttribute('tabindex', '0');
+});
+
 for (const rolePage of [
   ['riley.bennett@example.test', 'Equipment Fulfillment'],
   ['mike.torres@example.test', 'My Coach Teams'],

@@ -39,3 +39,30 @@ jobs:
 
       - name: Run complete verification
         run: make verify
+
+  streamlit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install locked browser dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Install pinned Streamlit dependencies
+        run: |
+          python3 -m venv .streamlit-venv
+          .streamlit-venv/bin/pip install --disable-pip-version-check -r demo/requirements.txt
+          echo "$GITHUB_WORKSPACE/.streamlit-venv/bin" >> "$GITHUB_PATH"
+
+      - name: Run Streamlit verification
+        run: make verify-streamlit

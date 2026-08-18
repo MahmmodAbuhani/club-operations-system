@@ -30,27 +30,34 @@ function navigation(): string
         return '';
     }
 
-    $links = ['<a href="?page=home">Home</a>'];
+    $links = [navigation_link('home', 'Home')];
     if (has_role('Player')) {
-        $links[] = '<a href="?page=player-search">Player Search</a>';
-        $links[] = '<a href="?page=player-join-sport">Join Sport</a>';
-        $links[] = '<a href="?page=player-order-equipment">Order Equipment</a>';
-        $links[] = '<a href="?page=player-teams">My Teams</a>';
-        $links[] = '<a href="?page=player-fees">Fees Owed</a>';
+        $links[] = navigation_link('player-search', 'Player Search');
+        $links[] = navigation_link('player-join-sport', 'Join Sport');
+        $links[] = navigation_link('player-order-equipment', 'Order Equipment');
+        $links[] = navigation_link('player-teams', 'My Teams');
+        $links[] = navigation_link('player-fees', 'Fees Owed');
     }
     if (has_role('Coach')) {
-        $links[] = '<a href="?page=coach-search">Coach Search</a>';
-        $links[] = '<a href="?page=coach-teams">Coach Teams</a>';
-        $links[] = '<a href="?page=coach-add-player">Add Player</a>';
+        $links[] = navigation_link('coach-search', 'Coach Search');
+        $links[] = navigation_link('coach-teams', 'Coach Teams');
+        $links[] = navigation_link('coach-add-player', 'Add Player');
     }
     if (has_role('Admin')) {
-        $links[] = '<a href="?page=admin-search">Admin Search</a>';
-        $links[] = '<a href="?page=admin-people">People</a>';
-        $links[] = '<a href="?page=admin-create-team">Create Team</a>';
-        $links[] = '<a href="?page=admin-assign-coach">Assign Coach</a>';
-        $links[] = '<a href="?page=admin-reports">Reports</a>';
+        $links[] = navigation_link('admin-search', 'Admin Search');
+        $links[] = navigation_link('admin-people', 'People');
+        $links[] = navigation_link('admin-create-team', 'Create Team');
+        $links[] = navigation_link('admin-assign-coach', 'Assign Coach');
+        $links[] = navigation_link('admin-reports', 'Reports');
     }
-    return '<nav>' . implode('', $links) . '</nav>';
+    return '<nav aria-label="Application navigation">' . implode('', $links) . '</nav>';
+}
+
+function navigation_link(string $route, string $label): string
+{
+    $current = (string) ($_GET['page'] ?? 'home');
+    $currentAttribute = $current === $route ? ' aria-current="page"' : '';
+    return '<a href="?page=' . h($route) . '"' . $currentAttribute . '>' . h($label) . '</a>';
 }
 
 function table_for(array $rows): string
@@ -60,19 +67,46 @@ function table_for(array $rows): string
     }
 
     $columns = array_keys($rows[0]);
-    $html = '<div class="table-wrap"><table><thead><tr>';
+    $html = '<div class="table-wrap" role="region" aria-label="Scrollable data table" tabindex="0"><table><thead><tr>';
     foreach ($columns as $column) {
-        $html .= '<th scope="col">' . h((string) $column) . '</th>';
+        $html .= '<th scope="col">' . h(human_column_label((string) $column)) . '</th>';
     }
     $html .= '</tr></thead><tbody>';
     foreach ($rows as $row) {
         $html .= '<tr>';
         foreach ($columns as $column) {
-            $html .= '<td>' . h($row[$column] ?? '') . '</td>';
+            $html .= '<td>' . h(format_table_value((string) $column, $row[$column] ?? null)) . '</td>';
         }
         $html .= '</tr>';
     }
     return $html . '</tbody></table></div>';
+}
+
+function human_column_label(string $column): string
+{
+    return match ($column) {
+        'SportName' => 'Sport',
+        'RegisteredPlayers' => 'Registered players',
+        'PlayerName' => 'Player',
+        'CoachName' => 'Coach',
+        'PlayerTeamFeeRows' => 'Player-team records',
+        'AverageFee' => 'Average fee owed',
+        'ItemName' => 'Equipment item',
+        'UnitsOrdered' => 'Units ordered',
+        'Revenue' => 'Estimated value',
+        default => trim(preg_replace('/(?<!^)([A-Z])/', ' $1', $column) ?? $column),
+    };
+}
+
+function format_table_value(string $column, mixed $value): string
+{
+    if ($value === null || $value === '') {
+        return 'n/a';
+    }
+    if (in_array($column, ['AverageFee', 'Revenue'], true)) {
+        return '$' . number_format((float) $value, 2);
+    }
+    return (string) $value;
 }
 
 function hidden_page(string $page, bool $includeCsrf = true): string

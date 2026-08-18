@@ -66,6 +66,12 @@ button:hover {
   background: var(--accent-dark);
 }
 
+nav a[aria-current="page"] {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
+}
+
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -84,9 +90,15 @@ select:focus-visible {
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 22px;
+  box-shadow: 0 12px 32px rgba(23, 32, 42, 0.06);
 }
 
-h1 { margin: 0 0 16px; }
+h1 {
+  margin: 0 0 16px;
+  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  letter-spacing: -0.03em;
+}
 h2 { margin: 24px 0 10px; font-size: 1.05rem; }
 
 form {
@@ -126,6 +138,18 @@ select {
   overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 8px;
+  scrollbar-gutter: stable;
+}
+
+.table-wrap:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.report-definition {
+  max-width: 65ch;
+  margin: -0.35rem 0 0.75rem;
+  color: var(--muted);
 }
 
 table {
@@ -158,6 +182,19 @@ th {
 .hint,
 .empty {
   color: var(--muted);
+}
+
+.selection-panel {
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px;
+  background: #fbfcfd;
+}
+
+.selection-panel h2 {
+  margin-top: 0;
 }
 
 code {
@@ -203,4 +240,13 @@ code {
   font-size: 1.1rem;
   font-weight: 700;
   margin: 2px 0 0;
+}
+
+.order-history {
+  margin: 16px 0;
+}
+
+.order-history h3 {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
 }

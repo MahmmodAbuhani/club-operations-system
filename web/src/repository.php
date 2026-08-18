@@ -67,12 +67,20 @@ function player_teams(int $personId): array
     );
 }
 
-function join_sport(int $personId, int $sportId): void
+function join_sport(int $personId, int $sportId): string
 {
-    execute_sql(
+    if (fetch_one('SELECT SportID FROM Sport WHERE SportID = ?', [$sportId]) === null) {
+        return 'That sport is not available.';
+    }
+
+    $inserted = execute_sql(
         'INSERT IGNORE INTO Registers (PersonID, SportID, RegistrationDate) VALUES (?, ?, CURRENT_DATE)',
         [$personId, $sportId]
     );
+
+    return $inserted === 1
+        ? 'Sport registration saved.'
+        : 'You are already registered for this sport.';
 }
 
 function leave_team_as_player(int $personId, int $teamId): string
@@ -101,14 +109,25 @@ function player_fees(int $personId): array
 function equipment_fulfillment_for_player(int $personId): array
 {
     return fetch_all(
-        'SELECT ef.TeamID, ef.SportID, t.TeamName, s.SportName, ef.ItemID, ef.ItemName,
+        "SELECT ef.TeamID, ef.SportID, t.TeamName, s.SportName, ef.ItemID, ef.ItemName,
                 ef.MinQuantity, ef.OrderedQuantity, ef.OutstandingQuantity, ef.FulfillmentStatus
          FROM EquipmentFulfillment ef
          JOIN Team t ON t.TeamID = ef.TeamID
          JOIN Sport s ON s.SportID = ef.SportID
          WHERE ef.PersonID = ?
-         ORDER BY t.TeamName, ef.ItemName',
+         ORDER BY (ef.FulfillmentStatus = 'Incomplete') DESC, t.TeamName, ef.ItemName",
         [$personId]
+    );
+}
+
+function equipment_order_history_for_player(int $personId, int $teamId, int $sportId, int $itemId): array
+{
+    return fetch_all(
+        'SELECT OrderedAt, SizeLabel, Quantity
+         FROM EquipmentOrder
+         WHERE PersonID = ? AND TeamID = ? AND SportID = ? AND ItemID = ?
+         ORDER BY OrderedAt DESC, OrderID DESC',
+        [$personId, $teamId, $sportId, $itemId]
     );
 }
 
@@ -153,6 +172,25 @@ function coach_teams(int $personId): array
          WHERE cf.PersonID = ?
          ORDER BY s.SportName, t.TeamName',
         [$personId]
+    );
+}
+
+function coach_add_player_options(int $coachId): array
+{
+    return fetch_all(
+        'SELECT t.TeamID, t.TeamName, s.SportName,
+                p.PersonID AS PlayerID,
+                CONCAT(p.FirstName, CHAR(32), p.LastName) AS PlayerName
+         FROM CoachesFor cf
+         JOIN Team t ON t.TeamID = cf.TeamID
+         JOIN Sport s ON s.SportID = t.SportID
+         LEFT JOIN Registers r ON r.SportID = t.SportID
+         LEFT JOIN Player pl ON pl.PersonID = r.PersonID
+         LEFT JOIN Person p ON p.PersonID = pl.PersonID
+         LEFT JOIN PlaysOn po ON po.PersonID = p.PersonID AND po.TeamID = t.TeamID
+         WHERE cf.PersonID = ? AND po.PersonID IS NULL
+         ORDER BY s.SportName, t.TeamName, PlayerName',
+        [$coachId]
     );
 }
 
@@ -282,6 +320,23 @@ function assign_coach(int $coachId, int $teamId, string $role): string
         [$coachId, $teamId, (int) $team['SportID'], $role, $role]
     );
     return 'Coach assignment saved.';
+}
+
+function admin_assign_coach_options(): array
+{
+    return fetch_all(
+        'SELECT t.TeamID, t.TeamName, s.SportName,
+                p.PersonID AS CoachID,
+                CONCAT(p.FirstName, CHAR(32), p.LastName) AS CoachName,
+                cf.CoachRole AS CurrentRole
+         FROM Team t
+         JOIN Sport s ON s.SportID = t.SportID
+         JOIN CanCoach cc ON cc.SportID = t.SportID
+         JOIN Coach c ON c.PersonID = cc.PersonID
+         JOIN Person p ON p.PersonID = c.PersonID
+         LEFT JOIN CoachesFor cf ON cf.PersonID = p.PersonID AND cf.TeamID = t.TeamID
+         ORDER BY s.SportName, t.TeamName, CoachName'
+    );
 }
 
 function report_popular_sports(): array

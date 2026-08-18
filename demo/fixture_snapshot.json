@@ -1,0 +1,1913 @@
+{
+  "fees": [
+    {
+      "TeamID": 1,
+      "PersonID": 1,
+      "TeamName": "Lions FC",
+      "AmountOwed": 314.0,
+      "PlayerName": "James Walker"
+    },
+    {
+      "TeamID": 3,
+      "PersonID": 1,
+      "TeamName": "North Stars",
+      "AmountOwed": 271.0,
+      "PlayerName": "James Walker"
+    },
+    {
+      "TeamID": 1,
+      "PersonID": 2,
+      "TeamName": "Lions FC",
+      "AmountOwed": 272.0,
+      "PlayerName": "Aisha Patel"
+    },
+    {
+      "TeamID": 5,
+      "PersonID": 2,
+      "TeamName": "Volley Aces",
+      "AmountOwed": 147.0,
+      "PlayerName": "Aisha Patel"
+    },
+    {
+      "TeamID": 2,
+      "PersonID": 3,
+      "TeamName": "River City FC",
+      "AmountOwed": 296.0,
+      "PlayerName": "Sophia Garcia"
+    },
+    {
+      "TeamID": 7,
+      "PersonID": 3,
+      "TeamName": "Baseline Club",
+      "AmountOwed": 175.0,
+      "PlayerName": "Sophia Garcia"
+    },
+    {
+      "TeamID": 2,
+      "PersonID": 4,
+      "TeamName": "River City FC",
+      "AmountOwed": 307.0,
+      "PlayerName": "Liam Chen"
+    },
+    {
+      "TeamID": 3,
+      "PersonID": 5,
+      "TeamName": "North Stars",
+      "AmountOwed": 284.0,
+      "PlayerName": "Emma Davis"
+    },
+    {
+      "TeamID": 4,
+      "PersonID": 6,
+      "TeamName": "Downtown Hoops",
+      "AmountOwed": 214.0,
+      "PlayerName": "Noah Brown"
+    },
+    {
+      "TeamID": 5,
+      "PersonID": 7,
+      "TeamName": "Volley Aces",
+      "AmountOwed": 138.0,
+      "PlayerName": "Olivia Wilson"
+    },
+    {
+      "TeamID": 6,
+      "PersonID": 8,
+      "TeamName": "Diamond Hawks",
+      "AmountOwed": 180.0,
+      "PlayerName": "Mason Lee"
+    },
+    {
+      "TeamID": 6,
+      "PersonID": 9,
+      "TeamName": "Diamond Hawks",
+      "AmountOwed": 135.0,
+      "PlayerName": "Isabella Martinez"
+    },
+    {
+      "TeamID": 7,
+      "PersonID": 10,
+      "TeamName": "Baseline Club",
+      "AmountOwed": 285.0,
+      "PlayerName": "Ethan Clark"
+    },
+    {
+      "TeamID": 8,
+      "PersonID": 11,
+      "TeamName": "Gridiron Juniors",
+      "AmountOwed": 315.0,
+      "PlayerName": "Mia Rodriguez"
+    },
+    {
+      "TeamID": 8,
+      "PersonID": 12,
+      "TeamName": "Gridiron Juniors",
+      "AmountOwed": 55.0,
+      "PlayerName": "Lucas Young"
+    },
+    {
+      "TeamID": 9,
+      "PersonID": 13,
+      "TeamName": "Southside Strikers",
+      "AmountOwed": 35.0,
+      "PlayerName": "Ava King"
+    },
+    {
+      "TeamID": 9,
+      "PersonID": 14,
+      "TeamName": "Southside Strikers",
+      "AmountOwed": 25.0,
+      "PlayerName": "Logan Wright"
+    },
+    {
+      "TeamID": 1,
+      "PersonID": 15,
+      "TeamName": "Lions FC",
+      "AmountOwed": 18.0,
+      "PlayerName": "Amelia Scott"
+    },
+    {
+      "TeamID": 10,
+      "PersonID": 16,
+      "TeamName": "Court Kings",
+      "AmountOwed": 35.0,
+      "PlayerName": "Benjamin Green"
+    },
+    {
+      "TeamID": 10,
+      "PersonID": 17,
+      "TeamName": "Court Kings",
+      "AmountOwed": 44.0,
+      "PlayerName": "Harper Adams"
+    },
+    {
+      "TeamID": 5,
+      "PersonID": 18,
+      "TeamName": "Volley Aces",
+      "AmountOwed": 10.0,
+      "PlayerName": "Elijah Baker"
+    },
+    {
+      "TeamID": 6,
+      "PersonID": 19,
+      "TeamName": "Diamond Hawks",
+      "AmountOwed": 30.0,
+      "PlayerName": "Charlotte Nelson"
+    },
+    {
+      "TeamID": 7,
+      "PersonID": 20,
+      "TeamName": "Baseline Club",
+      "AmountOwed": 10.0,
+      "PlayerName": "William Carter"
+    },
+    {
+      "TeamID": 8,
+      "PersonID": 21,
+      "TeamName": "Gridiron Juniors",
+      "AmountOwed": 90.0,
+      "PlayerName": "Evelyn Mitchell"
+    },
+    {
+      "TeamID": 9,
+      "PersonID": 22,
+      "TeamName": "Southside Strikers",
+      "AmountOwed": 16.0,
+      "PlayerName": "Henry Perez"
+    },
+    {
+      "TeamID": 1,
+      "PersonID": 32,
+      "TeamName": "Lions FC",
+      "AmountOwed": 35.0,
+      "PlayerName": "Riley Bennett"
+    },
+    {
+      "TeamID": 4,
+      "PersonID": 32,
+      "TeamName": "Downtown Hoops",
+      "AmountOwed": 55.0,
+      "PlayerName": "Riley Bennett"
+    }
+  ],
+  "items": [
+    {
+      "ItemID": 1,
+      "ItemName": "Jersey",
+      "UnitPrice": 35.0
+    },
+    {
+      "ItemID": 2,
+      "ItemName": "Shorts",
+      "UnitPrice": 25.0
+    },
+    {
+      "ItemID": 3,
+      "ItemName": "Shin Guards",
+      "UnitPrice": 18.0
+    },
+    {
+      "ItemID": 4,
+      "ItemName": "Cleats",
+      "UnitPrice": 70.0
+    },
+    {
+      "ItemID": 5,
+      "ItemName": "Socks",
+      "UnitPrice": 8.0
+    },
+    {
+      "ItemID": 6,
+      "ItemName": "Basketball",
+      "UnitPrice": 22.0
+    },
+    {
+      "ItemID": 7,
+      "ItemName": "Cap",
+      "UnitPrice": 15.0
+    },
+    {
+      "ItemID": 8,
+      "ItemName": "Glove",
+      "UnitPrice": 30.0
+    },
+    {
+      "ItemID": 9,
+      "ItemName": "Tennis Racket",
+      "UnitPrice": 65.0
+    },
+    {
+      "ItemID": 10,
+      "ItemName": "Football Pads",
+      "UnitPrice": 90.0
+    },
+    {
+      "ItemID": 11,
+      "ItemName": "Water Bottle",
+      "UnitPrice": 10.0
+    },
+    {
+      "ItemID": 12,
+      "ItemName": "Warmup Jacket",
+      "UnitPrice": 55.0
+    }
+  ],
+  "teams": [
+    {
+      "Season": "Spring 2026",
+      "TeamID": 1,
+      "SportID": 1,
+      "AgeGroup": "U14",
+      "TeamName": "Lions FC",
+      "CurrentRosterSize": 4
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 2,
+      "SportID": 1,
+      "AgeGroup": "U16",
+      "TeamName": "River City FC",
+      "CurrentRosterSize": 2
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 3,
+      "SportID": 2,
+      "AgeGroup": "U14",
+      "TeamName": "North Stars",
+      "CurrentRosterSize": 2
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 4,
+      "SportID": 2,
+      "AgeGroup": "U16",
+      "TeamName": "Downtown Hoops",
+      "CurrentRosterSize": 2
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 5,
+      "SportID": 3,
+      "AgeGroup": "U14",
+      "TeamName": "Volley Aces",
+      "CurrentRosterSize": 3
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 6,
+      "SportID": 4,
+      "AgeGroup": "U15",
+      "TeamName": "Diamond Hawks",
+      "CurrentRosterSize": 3
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 7,
+      "SportID": 5,
+      "AgeGroup": "U14",
+      "TeamName": "Baseline Club",
+      "CurrentRosterSize": 3
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 8,
+      "SportID": 6,
+      "AgeGroup": "U16",
+      "TeamName": "Gridiron Juniors",
+      "CurrentRosterSize": 3
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 9,
+      "SportID": 1,
+      "AgeGroup": "U12",
+      "TeamName": "Southside Strikers",
+      "CurrentRosterSize": 3
+    },
+    {
+      "Season": "Spring 2026",
+      "TeamID": 10,
+      "SportID": 2,
+      "AgeGroup": "U12",
+      "TeamName": "Court Kings",
+      "CurrentRosterSize": 2
+    }
+  ],
+  "people": [
+    {
+      "PersonID": 1,
+      "DisplayName": "James Walker"
+    },
+    {
+      "PersonID": 2,
+      "DisplayName": "Aisha Patel"
+    },
+    {
+      "PersonID": 3,
+      "DisplayName": "Sophia Garcia"
+    },
+    {
+      "PersonID": 4,
+      "DisplayName": "Liam Chen"
+    },
+    {
+      "PersonID": 5,
+      "DisplayName": "Emma Davis"
+    },
+    {
+      "PersonID": 6,
+      "DisplayName": "Noah Brown"
+    },
+    {
+      "PersonID": 7,
+      "DisplayName": "Olivia Wilson"
+    },
+    {
+      "PersonID": 8,
+      "DisplayName": "Mason Lee"
+    },
+    {
+      "PersonID": 9,
+      "DisplayName": "Isabella Martinez"
+    },
+    {
+      "PersonID": 10,
+      "DisplayName": "Ethan Clark"
+    },
+    {
+      "PersonID": 11,
+      "DisplayName": "Mia Rodriguez"
+    },
+    {
+      "PersonID": 12,
+      "DisplayName": "Lucas Young"
+    },
+    {
+      "PersonID": 13,
+      "DisplayName": "Ava King"
+    },
+    {
+      "PersonID": 14,
+      "DisplayName": "Logan Wright"
+    },
+    {
+      "PersonID": 15,
+      "DisplayName": "Amelia Scott"
+    },
+    {
+      "PersonID": 16,
+      "DisplayName": "Benjamin Green"
+    },
+    {
+      "PersonID": 17,
+      "DisplayName": "Harper Adams"
+    },
+    {
+      "PersonID": 18,
+      "DisplayName": "Elijah Baker"
+    },
+    {
+      "PersonID": 19,
+      "DisplayName": "Charlotte Nelson"
+    },
+    {
+      "PersonID": 20,
+      "DisplayName": "William Carter"
+    },
+    {
+      "PersonID": 21,
+      "DisplayName": "Evelyn Mitchell"
+    },
+    {
+      "PersonID": 22,
+      "DisplayName": "Henry Perez"
+    },
+    {
+      "PersonID": 23,
+      "DisplayName": "Grace Turner"
+    },
+    {
+      "PersonID": 24,
+      "DisplayName": "Mike Torres"
+    },
+    {
+      "PersonID": 25,
+      "DisplayName": "Sarah Johnson"
+    },
+    {
+      "PersonID": 26,
+      "DisplayName": "Daniel Hall"
+    },
+    {
+      "PersonID": 27,
+      "DisplayName": "Rachel Allen"
+    },
+    {
+      "PersonID": 28,
+      "DisplayName": "Omar Haddad"
+    },
+    {
+      "PersonID": 29,
+      "DisplayName": "Nina Brooks"
+    },
+    {
+      "PersonID": 30,
+      "DisplayName": "Priya Nair"
+    },
+    {
+      "PersonID": 31,
+      "DisplayName": "Morgan Reed"
+    },
+    {
+      "PersonID": 32,
+      "DisplayName": "Riley Bennett"
+    }
+  ],
+  "sports": [
+    {
+      "SportID": 1,
+      "SportName": "Soccer",
+      "MaxRosterSize": 18,
+      "RegistrationFee": 120.0
+    },
+    {
+      "SportID": 2,
+      "SportName": "Basketball",
+      "MaxRosterSize": 12,
+      "RegistrationFee": 95.0
+    },
+    {
+      "SportID": 3,
+      "SportName": "Volleyball",
+      "MaxRosterSize": 12,
+      "RegistrationFee": 90.0
+    },
+    {
+      "SportID": 4,
+      "SportName": "Baseball",
+      "MaxRosterSize": 15,
+      "RegistrationFee": 110.0
+    },
+    {
+      "SportID": 5,
+      "SportName": "Tennis",
+      "MaxRosterSize": 8,
+      "RegistrationFee": 85.0
+    },
+    {
+      "SportID": 6,
+      "SportName": "Football",
+      "MaxRosterSize": 18,
+      "RegistrationFee": 135.0
+    }
+  ],
+  "coaches": [
+    {
+      "PersonID": 24
+    },
+    {
+      "PersonID": 25
+    },
+    {
+      "PersonID": 26
+    },
+    {
+      "PersonID": 27
+    },
+    {
+      "PersonID": 28
+    },
+    {
+      "PersonID": 29
+    },
+    {
+      "PersonID": 30
+    },
+    {
+      "PersonID": 32
+    }
+  ],
+  "players": [
+    {
+      "PersonID": 1
+    },
+    {
+      "PersonID": 2
+    },
+    {
+      "PersonID": 3
+    },
+    {
+      "PersonID": 4
+    },
+    {
+      "PersonID": 5
+    },
+    {
+      "PersonID": 6
+    },
+    {
+      "PersonID": 7
+    },
+    {
+      "PersonID": 8
+    },
+    {
+      "PersonID": 9
+    },
+    {
+      "PersonID": 10
+    },
+    {
+      "PersonID": 11
+    },
+    {
+      "PersonID": 12
+    },
+    {
+      "PersonID": 13
+    },
+    {
+      "PersonID": 14
+    },
+    {
+      "PersonID": 15
+    },
+    {
+      "PersonID": 16
+    },
+    {
+      "PersonID": 17
+    },
+    {
+      "PersonID": 18
+    },
+    {
+      "PersonID": 19
+    },
+    {
+      "PersonID": 20
+    },
+    {
+      "PersonID": 21
+    },
+    {
+      "PersonID": 22
+    },
+    {
+      "PersonID": 32
+    }
+  ],
+  "requirements": [
+    {
+      "ItemID": 1,
+      "SportID": 1,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 2,
+      "SportID": 1,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 3,
+      "SportID": 1,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 4,
+      "SportID": 1,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 5,
+      "SportID": 1,
+      "MinQuantity": 2
+    },
+    {
+      "ItemID": 11,
+      "SportID": 1,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 1,
+      "SportID": 2,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 2,
+      "SportID": 2,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 6,
+      "SportID": 2,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 11,
+      "SportID": 2,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 12,
+      "SportID": 2,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 1,
+      "SportID": 3,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 2,
+      "SportID": 3,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 5,
+      "SportID": 3,
+      "MinQuantity": 2
+    },
+    {
+      "ItemID": 11,
+      "SportID": 3,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 1,
+      "SportID": 4,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 7,
+      "SportID": 4,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 8,
+      "SportID": 4,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 11,
+      "SportID": 4,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 1,
+      "SportID": 5,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 9,
+      "SportID": 5,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 11,
+      "SportID": 5,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 1,
+      "SportID": 6,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 10,
+      "SportID": 6,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 11,
+      "SportID": 6,
+      "MinQuantity": 1
+    },
+    {
+      "ItemID": 12,
+      "SportID": 6,
+      "MinQuantity": 1
+    }
+  ],
+  "source_files": [
+    "sql/01_schema.sql",
+    "sql/02_seed.sql"
+  ],
+  "registrations": [
+    {
+      "SportID": 1,
+      "PersonID": 1,
+      "RegistrationDate": "2026-03-01"
+    },
+    {
+      "SportID": 2,
+      "PersonID": 1,
+      "RegistrationDate": "2026-03-03"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 2,
+      "RegistrationDate": "2026-03-01"
+    },
+    {
+      "SportID": 3,
+      "PersonID": 2,
+      "RegistrationDate": "2026-03-04"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 3,
+      "RegistrationDate": "2026-03-01"
+    },
+    {
+      "SportID": 5,
+      "PersonID": 3,
+      "RegistrationDate": "2026-03-05"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 4,
+      "RegistrationDate": "2026-03-02"
+    },
+    {
+      "SportID": 2,
+      "PersonID": 5,
+      "RegistrationDate": "2026-03-02"
+    },
+    {
+      "SportID": 2,
+      "PersonID": 6,
+      "RegistrationDate": "2026-03-02"
+    },
+    {
+      "SportID": 3,
+      "PersonID": 7,
+      "RegistrationDate": "2026-03-04"
+    },
+    {
+      "SportID": 4,
+      "PersonID": 8,
+      "RegistrationDate": "2026-03-06"
+    },
+    {
+      "SportID": 4,
+      "PersonID": 9,
+      "RegistrationDate": "2026-03-06"
+    },
+    {
+      "SportID": 5,
+      "PersonID": 10,
+      "RegistrationDate": "2026-03-07"
+    },
+    {
+      "SportID": 6,
+      "PersonID": 11,
+      "RegistrationDate": "2026-03-08"
+    },
+    {
+      "SportID": 6,
+      "PersonID": 12,
+      "RegistrationDate": "2026-03-08"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 13,
+      "RegistrationDate": "2026-03-09"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 14,
+      "RegistrationDate": "2026-03-09"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 15,
+      "RegistrationDate": "2026-03-09"
+    },
+    {
+      "SportID": 2,
+      "PersonID": 16,
+      "RegistrationDate": "2026-03-10"
+    },
+    {
+      "SportID": 2,
+      "PersonID": 17,
+      "RegistrationDate": "2026-03-10"
+    },
+    {
+      "SportID": 3,
+      "PersonID": 18,
+      "RegistrationDate": "2026-03-11"
+    },
+    {
+      "SportID": 4,
+      "PersonID": 19,
+      "RegistrationDate": "2026-03-11"
+    },
+    {
+      "SportID": 5,
+      "PersonID": 20,
+      "RegistrationDate": "2026-03-12"
+    },
+    {
+      "SportID": 6,
+      "PersonID": 21,
+      "RegistrationDate": "2026-03-12"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 22,
+      "RegistrationDate": "2026-03-12"
+    },
+    {
+      "SportID": 1,
+      "PersonID": 32,
+      "RegistrationDate": "2026-03-13"
+    },
+    {
+      "SportID": 2,
+      "PersonID": 32,
+      "RegistrationDate": "2026-03-13"
+    }
+  ],
+  "equipment_orders": [
+    {
+      "ItemID": 1,
+      "TeamID": 1,
+      "OrderID": 1,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-20",
+      "SizeLabel": "YM"
+    },
+    {
+      "ItemID": 3,
+      "TeamID": 1,
+      "OrderID": 2,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-20",
+      "SizeLabel": "M"
+    },
+    {
+      "ItemID": 6,
+      "TeamID": 3,
+      "OrderID": 3,
+      "SportID": 2,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-22",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 1,
+      "OrderID": 4,
+      "SportID": 1,
+      "PersonID": 2,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-20",
+      "SizeLabel": "YL"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 5,
+      "OrderID": 5,
+      "SportID": 3,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-03-22",
+      "SizeLabel": "M"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 2,
+      "OrderID": 6,
+      "SportID": 1,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-21",
+      "SizeLabel": "S"
+    },
+    {
+      "ItemID": 9,
+      "TeamID": 7,
+      "OrderID": 7,
+      "SportID": 5,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-23",
+      "SizeLabel": "26"
+    },
+    {
+      "ItemID": 4,
+      "TeamID": 2,
+      "OrderID": 8,
+      "SportID": 1,
+      "PersonID": 4,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-21",
+      "SizeLabel": "6"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 3,
+      "OrderID": 9,
+      "SportID": 2,
+      "PersonID": 5,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-22",
+      "SizeLabel": "YM"
+    },
+    {
+      "ItemID": 6,
+      "TeamID": 4,
+      "OrderID": 10,
+      "SportID": 2,
+      "PersonID": 6,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-22",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 5,
+      "OrderID": 11,
+      "SportID": 3,
+      "PersonID": 7,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-23",
+      "SizeLabel": "YL"
+    },
+    {
+      "ItemID": 8,
+      "TeamID": 6,
+      "OrderID": 12,
+      "SportID": 4,
+      "PersonID": 8,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-24",
+      "SizeLabel": "Right"
+    },
+    {
+      "ItemID": 7,
+      "TeamID": 6,
+      "OrderID": 13,
+      "SportID": 4,
+      "PersonID": 9,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-24",
+      "SizeLabel": "Youth"
+    },
+    {
+      "ItemID": 9,
+      "TeamID": 7,
+      "OrderID": 14,
+      "SportID": 5,
+      "PersonID": 10,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-25",
+      "SizeLabel": "25"
+    },
+    {
+      "ItemID": 10,
+      "TeamID": 8,
+      "OrderID": 15,
+      "SportID": 6,
+      "PersonID": 11,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-26",
+      "SizeLabel": "M"
+    },
+    {
+      "ItemID": 12,
+      "TeamID": 8,
+      "OrderID": 16,
+      "SportID": 6,
+      "PersonID": 12,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-26",
+      "SizeLabel": "M"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 9,
+      "OrderID": 17,
+      "SportID": 1,
+      "PersonID": 13,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-27",
+      "SizeLabel": "YS"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 9,
+      "OrderID": 18,
+      "SportID": 1,
+      "PersonID": 14,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-27",
+      "SizeLabel": "YM"
+    },
+    {
+      "ItemID": 3,
+      "TeamID": 1,
+      "OrderID": 19,
+      "SportID": 1,
+      "PersonID": 15,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-27",
+      "SizeLabel": "S"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 10,
+      "OrderID": 20,
+      "SportID": 2,
+      "PersonID": 16,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-28",
+      "SizeLabel": "YM"
+    },
+    {
+      "ItemID": 6,
+      "TeamID": 10,
+      "OrderID": 21,
+      "SportID": 2,
+      "PersonID": 17,
+      "Quantity": 2,
+      "OrderedAt": "2026-03-28",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 5,
+      "OrderID": 22,
+      "SportID": 3,
+      "PersonID": 18,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-29",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 8,
+      "TeamID": 6,
+      "OrderID": 23,
+      "SportID": 4,
+      "PersonID": 19,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-29",
+      "SizeLabel": "Left"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 7,
+      "OrderID": 24,
+      "SportID": 5,
+      "PersonID": 20,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-29",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 10,
+      "TeamID": 8,
+      "OrderID": 25,
+      "SportID": 6,
+      "PersonID": 21,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-30",
+      "SizeLabel": "S"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 9,
+      "OrderID": 26,
+      "SportID": 1,
+      "PersonID": 22,
+      "Quantity": 2,
+      "OrderedAt": "2026-03-30",
+      "SizeLabel": "S"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 1,
+      "OrderID": 27,
+      "SportID": 1,
+      "PersonID": 32,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-30",
+      "SizeLabel": "S"
+    },
+    {
+      "ItemID": 12,
+      "TeamID": 4,
+      "OrderID": 28,
+      "SportID": 2,
+      "PersonID": 32,
+      "Quantity": 1,
+      "OrderedAt": "2026-03-30",
+      "SizeLabel": "S"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 1,
+      "OrderID": 29,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-04",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 1,
+      "OrderID": 30,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-05",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 3,
+      "TeamID": 1,
+      "OrderID": 31,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-06",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 4,
+      "TeamID": 1,
+      "OrderID": 32,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-07",
+      "SizeLabel": "4"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 1,
+      "OrderID": 33,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-08",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 1,
+      "OrderID": 34,
+      "SportID": 1,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-14",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 3,
+      "OrderID": 35,
+      "SportID": 2,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-06",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 3,
+      "OrderID": 36,
+      "SportID": 2,
+      "PersonID": 1,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-07",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 6,
+      "TeamID": 3,
+      "OrderID": 37,
+      "SportID": 2,
+      "PersonID": 1,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-11",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 3,
+      "OrderID": 38,
+      "SportID": 2,
+      "PersonID": 1,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-16",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 12,
+      "TeamID": 3,
+      "OrderID": 39,
+      "SportID": 2,
+      "PersonID": 1,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-17",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 1,
+      "OrderID": 40,
+      "SportID": 1,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-05",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 1,
+      "OrderID": 41,
+      "SportID": 1,
+      "PersonID": 2,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-06",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 3,
+      "TeamID": 1,
+      "OrderID": 42,
+      "SportID": 1,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-07",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 4,
+      "TeamID": 1,
+      "OrderID": 43,
+      "SportID": 1,
+      "PersonID": 2,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-08",
+      "SizeLabel": "4"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 1,
+      "OrderID": 44,
+      "SportID": 1,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-09",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 1,
+      "OrderID": 45,
+      "SportID": 1,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-15",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 5,
+      "OrderID": 46,
+      "SportID": 3,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-09",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 5,
+      "OrderID": 47,
+      "SportID": 3,
+      "PersonID": 2,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-10",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 5,
+      "OrderID": 48,
+      "SportID": 3,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-13",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 5,
+      "OrderID": 49,
+      "SportID": 3,
+      "PersonID": 2,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-19",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 2,
+      "OrderID": 50,
+      "SportID": 1,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-07",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 2,
+      "OrderID": 51,
+      "SportID": 1,
+      "PersonID": 3,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-08",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 3,
+      "TeamID": 2,
+      "OrderID": 52,
+      "SportID": 1,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-09",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 4,
+      "TeamID": 2,
+      "OrderID": 53,
+      "SportID": 1,
+      "PersonID": 3,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-10",
+      "SizeLabel": "4"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 2,
+      "OrderID": 54,
+      "SportID": 1,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-11",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 2,
+      "OrderID": 55,
+      "SportID": 1,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-17",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 7,
+      "OrderID": 56,
+      "SportID": 5,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-12",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 9,
+      "TeamID": 7,
+      "OrderID": 57,
+      "SportID": 5,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-20",
+      "SizeLabel": "25"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 7,
+      "OrderID": 58,
+      "SportID": 5,
+      "PersonID": 3,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-01",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 2,
+      "OrderID": 59,
+      "SportID": 1,
+      "PersonID": 4,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-08",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 2,
+      "OrderID": 60,
+      "SportID": 1,
+      "PersonID": 4,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-09",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 3,
+      "TeamID": 2,
+      "OrderID": 61,
+      "SportID": 1,
+      "PersonID": 4,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-10",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 4,
+      "TeamID": 2,
+      "OrderID": 62,
+      "SportID": 1,
+      "PersonID": 4,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-11",
+      "SizeLabel": "4"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 2,
+      "OrderID": 63,
+      "SportID": 1,
+      "PersonID": 4,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-12",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 2,
+      "OrderID": 64,
+      "SportID": 1,
+      "PersonID": 4,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-18",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 3,
+      "OrderID": 65,
+      "SportID": 2,
+      "PersonID": 5,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-10",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 3,
+      "OrderID": 66,
+      "SportID": 2,
+      "PersonID": 5,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-11",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 6,
+      "TeamID": 3,
+      "OrderID": 67,
+      "SportID": 2,
+      "PersonID": 5,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-15",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 3,
+      "OrderID": 68,
+      "SportID": 2,
+      "PersonID": 5,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-20",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 12,
+      "TeamID": 3,
+      "OrderID": 69,
+      "SportID": 2,
+      "PersonID": 5,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-21",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 4,
+      "OrderID": 70,
+      "SportID": 2,
+      "PersonID": 6,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-12",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 4,
+      "OrderID": 71,
+      "SportID": 2,
+      "PersonID": 6,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-13",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 6,
+      "TeamID": 4,
+      "OrderID": 72,
+      "SportID": 2,
+      "PersonID": 6,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-17",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 4,
+      "OrderID": 73,
+      "SportID": 2,
+      "PersonID": 6,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-01",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 12,
+      "TeamID": 4,
+      "OrderID": 74,
+      "SportID": 2,
+      "PersonID": 6,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-02",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 5,
+      "OrderID": 75,
+      "SportID": 3,
+      "PersonID": 7,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-14",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 2,
+      "TeamID": 5,
+      "OrderID": 76,
+      "SportID": 3,
+      "PersonID": 7,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-15",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 5,
+      "TeamID": 5,
+      "OrderID": 77,
+      "SportID": 3,
+      "PersonID": 7,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-18",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 5,
+      "OrderID": 78,
+      "SportID": 3,
+      "PersonID": 7,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-03",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 6,
+      "OrderID": 79,
+      "SportID": 4,
+      "PersonID": 8,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-16",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 7,
+      "TeamID": 6,
+      "OrderID": 80,
+      "SportID": 4,
+      "PersonID": 8,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-01",
+      "SizeLabel": "Adult"
+    },
+    {
+      "ItemID": 8,
+      "TeamID": 6,
+      "OrderID": 81,
+      "SportID": 4,
+      "PersonID": 8,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-02",
+      "SizeLabel": "Left"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 6,
+      "OrderID": 82,
+      "SportID": 4,
+      "PersonID": 8,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-05",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 6,
+      "OrderID": 83,
+      "SportID": 4,
+      "PersonID": 9,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-17",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 7,
+      "TeamID": 6,
+      "OrderID": 84,
+      "SportID": 4,
+      "PersonID": 9,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-02",
+      "SizeLabel": "Adult"
+    },
+    {
+      "ItemID": 8,
+      "TeamID": 6,
+      "OrderID": 85,
+      "SportID": 4,
+      "PersonID": 9,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-03",
+      "SizeLabel": "Left"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 6,
+      "OrderID": 86,
+      "SportID": 4,
+      "PersonID": 9,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-06",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 7,
+      "OrderID": 87,
+      "SportID": 5,
+      "PersonID": 10,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-19",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 9,
+      "TeamID": 7,
+      "OrderID": 88,
+      "SportID": 5,
+      "PersonID": 10,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-06",
+      "SizeLabel": "25"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 7,
+      "OrderID": 89,
+      "SportID": 5,
+      "PersonID": 10,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-08",
+      "SizeLabel": "Standard"
+    },
+    {
+      "ItemID": 1,
+      "TeamID": 8,
+      "OrderID": 90,
+      "SportID": 6,
+      "PersonID": 11,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-21",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 10,
+      "TeamID": 8,
+      "OrderID": 91,
+      "SportID": 6,
+      "PersonID": 11,
+      "Quantity": 2,
+      "OrderedAt": "2026-04-09",
+      "SizeLabel": "L"
+    },
+    {
+      "ItemID": 11,
+      "TeamID": 8,
+      "OrderID": 92,
+      "SportID": 6,
+      "PersonID": 11,
+      "Quantity": 1,
+      "OrderedAt": "2026-04-10",
+      "SizeLabel": "Standard"
+    }
+  ],
+  "coach_assignments": [
+    {
+      "TeamID": 1,
+      "SportID": 1,
+      "PersonID": 24,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 1,
+      "SportID": 1,
+      "PersonID": 25,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 2,
+      "SportID": 1,
+      "PersonID": 25,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 2,
+      "SportID": 1,
+      "PersonID": 30,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 3,
+      "SportID": 2,
+      "PersonID": 24,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 3,
+      "SportID": 2,
+      "PersonID": 26,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 4,
+      "SportID": 2,
+      "PersonID": 26,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 4,
+      "SportID": 2,
+      "PersonID": 30,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 5,
+      "SportID": 3,
+      "PersonID": 26,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 5,
+      "SportID": 3,
+      "PersonID": 27,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 6,
+      "SportID": 4,
+      "PersonID": 27,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 6,
+      "SportID": 4,
+      "PersonID": 28,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 7,
+      "SportID": 5,
+      "PersonID": 27,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 7,
+      "SportID": 5,
+      "PersonID": 29,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 8,
+      "SportID": 6,
+      "PersonID": 25,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 8,
+      "SportID": 6,
+      "PersonID": 28,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 9,
+      "SportID": 1,
+      "PersonID": 27,
+      "CoachRole": "Head Coach"
+    },
+    {
+      "TeamID": 9,
+      "SportID": 1,
+      "PersonID": 32,
+      "CoachRole": "Assistant Coach"
+    },
+    {
+      "TeamID": 10,
+      "SportID": 2,
+      "PersonID": 24,
+      "CoachRole": "Head Coach"
+    }
+  ]
+}

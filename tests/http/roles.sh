@@ -59,6 +59,18 @@ login 'james.walker@example.test' "$player_jar"
 [[ "$(status_for "$player_jar" admin-reports)" == '403' ]]
 printf 'PASS: player role flow and cross-role denials.\n'
 
+token="$(csrf_for "$player_jar" player-join-sport)"
+duplicate_before="$(mysql_value 'SELECT COUNT(*) FROM Registers WHERE PersonID=1 AND SportID=1;')"
+curl --silent --show-error -L -b "$player_jar" -c "$player_jar" \
+    --data-urlencode 'page=player-join-sport' \
+    --data-urlencode "csrf_token=$token" \
+    --data-urlencode 'sport_id=1' \
+    "$base_url/" >"$tmp_dir/body"
+duplicate_after="$(mysql_value 'SELECT COUNT(*) FROM Registers WHERE PersonID=1 AND SportID=1;')"
+[[ "$duplicate_after" == "$duplicate_before" ]]
+grep -Fq 'already registered for this sport' "$tmp_dir/body"
+printf 'PASS: duplicate sport registration reports an unchanged state without a write.\n'
+
 riley_jar="$tmp_dir/riley.cookies"
 login 'riley.bennett@example.test' "$riley_jar"
 [[ "$(status_for "$riley_jar" player-teams)" == '200' ]]
@@ -129,6 +141,16 @@ coach_jar="$tmp_dir/coach.cookies"
 login 'mike.torres@example.test' "$coach_jar"
 [[ "$(status_for "$coach_jar" coach-add-player)" == '200' ]]
 [[ "$(status_for "$coach_jar" admin-reports)" == '403' ]]
+
+curl --silent --show-error -b "$coach_jar" \
+    "$base_url/?page=coach-add-player" >"$tmp_dir/body"
+grep -Fq 'Player for Lions FC' "$tmp_dir/body"
+grep -Fq 'Ava King' "$tmp_dir/body"
+if grep -Fq 'Player PersonID' "$tmp_dir/body" || grep -Fq 'TeamID' "$tmp_dir/body"; then
+    printf 'FAIL: coach add-player form exposes raw database identifiers.\n' >&2
+    exit 1
+fi
+printf 'PASS: coach add-player form uses names and owned-team context.\n'
 
 token="$(csrf_for "$coach_jar" coach-add-player)"
 curl --silent --show-error -L -b "$coach_jar" -c "$coach_jar" \
@@ -214,6 +236,16 @@ admin_jar="$tmp_dir/admin.cookies"
 login 'priya.nair@example.test' "$admin_jar"
 [[ "$(status_for "$admin_jar" admin-reports)" == '200' ]]
 [[ "$(status_for "$admin_jar" player-teams)" == '403' ]]
+
+curl --silent --show-error -b "$admin_jar" \
+    "$base_url/?page=admin-assign-coach" >"$tmp_dir/body"
+grep -Fq 'Coach for Lions FC' "$tmp_dir/body"
+grep -Fq 'Mike Torres' "$tmp_dir/body"
+if grep -Fq 'Coach PersonID' "$tmp_dir/body" || grep -Fq 'TeamID' "$tmp_dir/body"; then
+    printf 'FAIL: admin coach-assignment form exposes raw database identifiers.\n' >&2
+    exit 1
+fi
+printf 'PASS: admin coach-assignment form uses names and team context.\n'
 
 token="$(csrf_for "$admin_jar" admin-assign-coach)"
 curl --silent --show-error -L -b "$admin_jar" -c "$admin_jar" \
