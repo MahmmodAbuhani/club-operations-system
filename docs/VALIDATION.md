@@ -37,7 +37,7 @@ Every Docker test project removes its containers, network, and data volume on ex
 
 ## Streamlit companion verification
 
-The companion verification path exports the snapshot from the schema and seed SQL, checks collection counts and sensitive-field exclusions, runs pure Python transformation tests, and exercises the read-only browser surface. The Playwright check selects Soccer and confirms the resulting fixture rows are present in the rendered data-grid surface. Run `make fixture-snapshot` followed by `make verify-streamlit` from the repository root.
+The [live Streamlit companion](https://club-operations-demo.streamlit.app/) runs the same fixture-backed read-only surface. The companion verification path exports the snapshot from the schema and seed SQL, checks collection counts and sensitive-field exclusions, runs pure Python transformation tests, and exercises the read-only browser surface. The Playwright check selects Soccer and confirms the resulting fixture rows are present in the rendered data-grid surface. Run `make fixture-snapshot` followed by `make verify-streamlit` from the repository root.
 
 ## Verified database contract
 
