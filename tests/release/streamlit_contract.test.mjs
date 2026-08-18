@@ -7,12 +7,12 @@ import { fileURLToPath } from 'node:url';
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const readPublicFile = (relativePath) => readFile(path.join(projectRoot, relativePath), 'utf8');
 
-test('Streamlit companion has pinned runtime inputs and a browser contract', async () => {
+test('Streamlit companion has compatible runtime inputs and a browser contract', async () => {
   const requirements = await readPublicFile('demo/requirements.txt');
   const app = await readPublicFile('demo/streamlit_app.py');
   const browserConfig = await readPublicFile('playwright.streamlit.config.js');
 
-  assert.equal(requirements.trim(), 'pandas==2.2.2\nstreamlit==1.32.0');
+  assert.equal(requirements.trim(), 'pandas>=2.3,<3\nstreamlit>=1.54,<2');
   assert.match(app, /Interactive Python demo — fixture-backed; not the PHP\/MySQL runtime\./u);
   assert.match(app, /fixture_snapshot\.json/u);
   assert.match(app, /sql\/02_seed\.sql/u);
