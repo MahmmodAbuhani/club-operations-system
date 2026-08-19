@@ -95,6 +95,8 @@ test('README routes visitors to the hosted walkthrough instead of repository sou
   );
   assert.match(guide, /static evidence walkthrough/u);
   assert.match(guide, /GitHub Pages/u);
+  assert.match(guide, /live interactive Python demo/u);
+  assert.match(guide, /select a sport/u);
   assert.doesNotMatch(guide, /GitHub Pages is not enabled/u);
   assert.doesNotMatch(guide, /artifact is not hosted/u);
   assert.match(guide, /Role authorization/u);

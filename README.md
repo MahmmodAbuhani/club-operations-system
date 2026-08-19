@@ -12,15 +12,15 @@ The preview is built from an authenticated local fixture capture. Its source and
 
 ## 90-second guide
 
-Open the [static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. For the [live interactive Python demo](https://club-operations-demo.streamlit.app/) over the same fictional data, use the [Streamlit companion guide](docs/STREAMLIT_DEMO.md) for its source and local verification path. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
+Open the [static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. Then open the [live interactive Python demo](https://club-operations-demo.streamlit.app/) over the same fictional data and select a sport to recalculate its read-only views. Use the [Streamlit companion guide](docs/STREAMLIT_DEMO.md) for its source and local verification path. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
 
 | Time | Follow the evidence |
 |---|---|
 | 0-15 seconds | Choose one current path: [`Role authorization`](tests/http/roles.sh), [`Roster concurrency`](tests/sql/concurrency.sh), [`Equipment fulfillment`](tests/http/fulfillment.sh), or [`Invariant handling`](docs/INVARIANTS.md). Scan the full [`relational model`](docs/erd.svg) for context. |
-| 15-35 seconds | Inspect the capacity trigger in [`sql/01_schema.sql`](sql/01_schema.sql), the synchronized races in [`tests/sql/concurrency.sh`](tests/sql/concurrency.sh), and the role denials in [`tests/http/roles.sh`](tests/http/roles.sh). |
-| 35-55 seconds | Open the authentic [`interface evidence`](docs/SCREENSHOTS.md) and its [`visual hash ledger`](docs/VISUAL_HASHES.md). |
-| 55-75 seconds | Review the complete [`verification workflow`](.github/workflows/ci.yml), then run `make verify` and `make verify-image` locally. |
-| 75-90 seconds | Check the [`data and rights contract`](docs/DATA.md), [`security policy`](SECURITY.md), and [limits](#limits-data-rights-and-security). |
+| 15-30 seconds | Open the [live Python demo](https://club-operations-demo.streamlit.app/), select a sport, and inspect the recalculated roster, equipment, staffing, and fee views. |
+| 30-50 seconds | Inspect the capacity trigger in [`sql/01_schema.sql`](sql/01_schema.sql), the synchronized races in [`tests/sql/concurrency.sh`](tests/sql/concurrency.sh), and the role denials in [`tests/http/roles.sh`](tests/http/roles.sh). |
+| 50-65 seconds | Open the authentic [`interface evidence`](docs/SCREENSHOTS.md) and its [`visual hash ledger`](docs/VISUAL_HASHES.md). |
+| 65-90 seconds | Review the [`verification workflow`](.github/workflows/ci.yml), run `make verify` and `make verify-image`, then check the [`data and rights contract`](docs/DATA.md), [`security policy`](SECURITY.md), and [limits](#limits-data-rights-and-security). |
 
 To reproduce the complete local check, run `make verify`. The command rebuilds isolated databases and exercises schema rules, contention, application authorization, negative mutations, and automated accessibility checks.
 
@@ -28,7 +28,7 @@ To reproduce the complete local check, run `make verify`. The command rebuilds i
 
 The [GitHub Pages walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is the public, no-account demo. It is a static HTML, CSS, and JavaScript evidence layer that links the system's rules to source files, tests, diagrams, and authentic fixture captures. It does not connect to PHP, MySQL, or a visitor's data.
 
-The [live Streamlit companion](https://club-operations-demo.streamlit.app/) and its [guide](docs/STREAMLIT_DEMO.md) document the read-only interactive Python view. It uses the committed sanitized fixture snapshot and is clearly labeled `Interactive Python demo — fixture-backed; not the PHP/MySQL runtime.`
+The [live Streamlit companion](https://club-operations-demo.streamlit.app/) and its [guide](docs/STREAMLIT_DEMO.md) document the read-only interactive Python view. It uses the committed sanitized fixture snapshot and is clearly labeled `Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.`
 
 The full application is reproducible locally with Docker. That boundary is intentional: the public demo shows how the system works, while the local runtime provides the executable forms, database writes, authorization checks, and concurrency tests.
 
@@ -53,7 +53,7 @@ Database guarantees apply to ordinary writes through the `sportlfc` runtime prin
 - **Least-privilege application access:** [`sql/04_app_grants.sh`](sql/04_app_grants.sh) limits the runtime principal, while [`web/src/repository.php`](web/src/repository.php) maps only the named roster-capacity database signal to specific user feedback.
 - **State-safe authorization:** [`web/public/index.php`](web/public/index.php) and [`web/src/bootstrap.php`](web/src/bootstrap.php) enforce methods, roles, ownership, session rotation, and cross-site request forgery protection. The HTTP suites confirm rejected requests do not alter data.
 - **Layered verification:** [`scripts/verify.sh`](scripts/verify.sh) orders static checks, locked dependencies, SQL tests, synchronized races, role workflows, and browser accessibility tests so each stage starts from an isolated fixture.
-- **Interactive Python companion:** [`demo/streamlit_app.py`](demo/streamlit_app.py) renders read-only charts and tables from [`demo/fixture_snapshot.json`](demo/fixture_snapshot.json); [`tests/e2e/streamlit.spec.js`](tests/e2e/streamlit.spec.js) checks its browser path.
+- **Interactive Python companion:** [`demo/streamlit_app.py`](demo/streamlit_app.py) renders read-only progress tables and summaries from [`demo/fixture_snapshot.json`](demo/fixture_snapshot.json); [`tests/e2e/streamlit.spec.js`](tests/e2e/streamlit.spec.js) checks its browser path.
 
 ## Working familiarity
 

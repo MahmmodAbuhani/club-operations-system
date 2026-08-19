@@ -91,8 +91,8 @@ test('hype, filler, vague links, and em dashes are rejected', async () => {
   );
 });
 
-test('the required Streamlit boundary label is allowed while other em dashes remain rejected', async () => {
-  const requiredLabel = 'Interactive Python demo — fixture-backed; not the PHP/MySQL runtime.';
+test('the required Streamlit boundary label uses plain punctuation while other em dashes remain rejected', async () => {
+  const requiredLabel = 'Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.';
   assert.deepEqual(await scanFixture(`${requiredLabel}\n`), []);
 
   const findings = await scanFixture('A different public sentence — with an em dash.\n');

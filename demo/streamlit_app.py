@@ -16,7 +16,7 @@ from streamlit_data import (
 )
 
 
-BOUNDARY_LABEL = "Interactive Python demo — fixture-backed; not the PHP/MySQL runtime."
+BOUNDARY_LABEL = "Interactive Python demo: fixture-backed, not the PHP/MySQL runtime."
 
 st.set_page_config(
     page_title="Club Operations System | Interactive Python demo",
@@ -44,11 +44,14 @@ st.write(
 )
 
 sport_names = [row["SportName"] for row in snapshot["sports"]]
-with st.sidebar:
-    st.header("Explore the fixture")
-    selected_sport = st.selectbox("Sport filter", ["All sports", *sport_names])
-    sport_name = None if selected_sport == "All sports" else selected_sport
-    st.caption("Choose a sport to focus the roster, equipment, staffing, and fee views.")
+st.subheader("Explore the fixture")
+selected_sport = st.selectbox(
+    "Sport filter",
+    ["All sports", *sport_names],
+    help="Choose a sport to focus the roster, equipment, staffing, and fee views.",
+)
+sport_name = None if selected_sport == "All sports" else selected_sport
+st.caption("Choose a sport to focus the roster, equipment, staffing, and fee views.")
 
 active_snapshot = filter_snapshot(snapshot, sport_name)
 metrics = overview_metrics(active_snapshot)
@@ -64,14 +67,10 @@ st.subheader("Roster capacity")
 roster_rows = roster_capacity_rows(active_snapshot)
 if roster_rows:
     roster_frame = pd.DataFrame(roster_rows)
-    st.bar_chart(
-        roster_frame.set_index("TeamName")[["CurrentRosterSize", "MaxRosterSize"]],
-        use_container_width=True,
-    )
     st.dataframe(
         roster_frame,
         hide_index=True,
-        use_container_width=True,
+        width="stretch",
         column_config={
             "UtilizationPercent": st.column_config.ProgressColumn(
                 "Utilization",
@@ -88,18 +87,34 @@ st.subheader("Equipment fulfillment")
 fulfillment_rows = equipment_fulfillment_rows(active_snapshot)
 if fulfillment_rows:
     fulfillment_frame = pd.DataFrame(fulfillment_rows)
-    st.bar_chart(
-        fulfillment_frame.set_index("ItemName")[["RequiredUnits", "OrderedUnits"]],
-        use_container_width=True,
+    fulfillment_frame["FulfillmentPercent"] = [
+        100.0 if required == 0 else min(100.0, round((ordered / required) * 100, 1))
+        for required, ordered in zip(
+            fulfillment_frame["RequiredUnits"],
+            fulfillment_frame["OrderedUnits"],
+            strict=True,
+        )
+    ]
+    st.dataframe(
+        fulfillment_frame,
+        hide_index=True,
+        width="stretch",
+        column_config={
+            "FulfillmentPercent": st.column_config.ProgressColumn(
+                "Fulfillment",
+                format="%.1f%%",
+                min_value=0,
+                max_value=100,
+            )
+        },
     )
-    st.dataframe(fulfillment_frame, hide_index=True, use_container_width=True)
 else:
     st.warning("No equipment requirements are available for this view.")
 
 st.subheader("Staffing coverage")
 staffing_rows_for_view = staffing_rows(active_snapshot)
 if staffing_rows_for_view:
-    st.dataframe(pd.DataFrame(staffing_rows_for_view), hide_index=True, use_container_width=True)
+    st.dataframe(pd.DataFrame(staffing_rows_for_view), hide_index=True, width="stretch")
 else:
     st.warning("No staffing rows are available for this view.")
 

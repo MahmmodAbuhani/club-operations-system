@@ -1,6 +1,6 @@
 # Validation record
 
-This verification record began with an isolated local checkout on August 11, 2026 and was refreshed on August 18, 2026 after the public workflow, accessibility, and evidence surfaces were repaired and the complete native verification command was rerun. The [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted verification by commit, and the [static evidence walkthrough is hosted on GitHub Pages](https://mahmmodabuhani.github.io/club-operations-system/). The PHP/MySQL system remains local. Local checks and static hosting do not establish a production operating record. Later code changes require a new exact-revision verification before their results are described as current.
+This verification record began with an isolated local checkout on August 11, 2026 and was refreshed on August 19, 2026 after the public workflow, accessibility, evidence, and Streamlit surfaces were repaired and the complete native verification command was rerun. The [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted verification by commit, and the [static evidence walkthrough is hosted on GitHub Pages](https://mahmmodabuhani.github.io/club-operations-system/). The PHP/MySQL system remains local. Local checks and static hosting do not establish a production operating record. Later code changes require a new exact-revision verification before their results are described as current.
 
 ## Environment
 
@@ -13,6 +13,7 @@ This verification record began with an isolated local checkout on August 11, 202
 | Node.js / npm | 26.3.0 / 11.16.0 locally; CI targets Node 22 |
 | Playwright / axe | 1.62.1 / 4.12.1 |
 | Mermaid CLI | 11.16.0 from `package-lock.json` |
+| Python / Streamlit | Python 3.13.7 / Streamlit 1.62.0 in the isolated companion QA environment |
 
 The MySQL and PHP images were resolved by immutable digest. `make verify-image` inspected the MySQL registry index at its pinned digest and found both required platform manifests. The local Docker execution used the host's ARM64 image; registry inspection did not execute the AMD64 image. The dependency tree was installed from `package-lock.json`; the offline local npm audit, using locally cached advisory data, reported zero known vulnerabilities in the locked dependency tree.
 
@@ -22,7 +23,7 @@ The MySQL and PHP images were resolved by immutable digest. `make verify-image` 
 make verify
 ```
 
-On August 15, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs eight dependency-ordered stages:
+On August 19, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs eight dependency-ordered stages:
 
 1. Compose validation, PHP lint, all repository shell-script syntax checks, and public-surface assertions.
 2. Lockfile install, exact Chromium availability, dependency audit, and the portable release-contract tests discovered from `tests/release/*.test.mjs`, including the static walkthrough release contracts.
@@ -37,7 +38,7 @@ Every Docker test project removes its containers, network, and data volume on ex
 
 ## Streamlit companion verification
 
-The [live Streamlit companion](https://club-operations-demo.streamlit.app/) runs the same fixture-backed read-only surface. The companion verification path exports the snapshot from the schema and seed SQL, checks collection counts and sensitive-field exclusions, runs pure Python transformation tests, and exercises the read-only browser surface. The Playwright check selects Soccer and confirms the resulting fixture rows are present in the rendered data-grid surface. Run `make fixture-snapshot` followed by `make verify-streamlit` from the repository root.
+The [live Streamlit companion](https://club-operations-demo.streamlit.app/) runs the same fixture-backed read-only surface. The companion verification path exports the snapshot from the schema and seed SQL, checks collection counts and sensitive-field exclusions, runs pure Python transformation tests, and exercises the read-only browser surface. The Streamlit view uses progress tables and summaries instead of a chart renderer so the public surface stays readable on narrow screens without browser chart warnings. The Playwright check selects Soccer and confirms the resulting fixture rows are present in the rendered data-grid surface. Run `make fixture-snapshot` followed by `make verify-streamlit` from the repository root.
 
 ## Verified database contract
 
