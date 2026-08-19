@@ -1,6 +1,6 @@
 # Validation record
 
-This verification record began with an isolated local checkout on August 11, 2026 and was refreshed on August 15, 2026 after the walkthrough route and opening were repaired and the complete native verification command was rerun. The [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted verification by commit, and the [static evidence walkthrough is hosted on GitHub Pages](https://mahmmodabuhani.github.io/club-operations-system/). The PHP/MySQL system remains local. Local checks and static hosting do not establish a production operating record. Later code changes require a new exact-revision verification before their results are described as current.
+This verification record began with an isolated local checkout on August 11, 2026 and was refreshed on August 19, 2026 after the public workflow, accessibility, evidence, and Streamlit surfaces were repaired and the complete native verification command was rerun. The [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted verification by commit, and the [static evidence walkthrough is hosted on GitHub Pages](https://mahmmodabuhani.github.io/club-operations-system/). The PHP/MySQL system remains local. Local checks and static hosting do not establish a production operating record. Later code changes require a new exact-revision verification before their results are described as current.
 
 ## Environment
 
@@ -13,6 +13,7 @@ This verification record began with an isolated local checkout on August 11, 202
 | Node.js / npm | 26.3.0 / 11.16.0 locally; CI targets Node 22 |
 | Playwright / axe | 1.62.1 / 4.12.1 |
 | Mermaid CLI | 11.16.0 from `package-lock.json` |
+| Python / Streamlit | Python 3.13.7 / Streamlit 1.62.0 in the isolated companion QA environment |
 
 The MySQL and PHP images were resolved by immutable digest. `make verify-image` inspected the MySQL registry index at its pinned digest and found both required platform manifests. The local Docker execution used the host's ARM64 image; registry inspection did not execute the AMD64 image. The dependency tree was installed from `package-lock.json`; the offline local npm audit, using locally cached advisory data, reported zero known vulnerabilities in the locked dependency tree.
 
@@ -22,7 +23,7 @@ The MySQL and PHP images were resolved by immutable digest. `make verify-image` 
 make verify
 ```
 
-On August 15, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs eight dependency-ordered stages:
+On August 19, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs eight dependency-ordered stages:
 
 1. Compose validation, PHP lint, all repository shell-script syntax checks, and public-surface assertions.
 2. Lockfile install, exact Chromium availability, dependency audit, and the portable release-contract tests discovered from `tests/release/*.test.mjs`, including the static walkthrough release contracts.
@@ -34,6 +35,10 @@ On August 15, 2026 the command exited successfully with `Club Operations System 
 8. Fresh Docker Playwright, axe, keyboard-focus, and 320 CSS-pixel application reflow checks.
 
 Every Docker test project removes its containers, network, and data volume on exit, so suites do not share database state.
+
+## Streamlit companion verification
+
+The [live Streamlit companion](https://club-operations-demo.streamlit.app/) runs the same fixture-backed read-only surface. The companion verification path exports the snapshot from the schema and seed SQL, checks collection counts and sensitive-field exclusions, runs pure Python transformation tests, and exercises the read-only browser surface. The Streamlit view uses progress tables and summaries instead of a chart renderer so the public surface stays readable on narrow screens without browser chart warnings. The Playwright check selects Soccer and confirms the resulting fixture rows are present in the rendered data-grid surface. Run `make fixture-snapshot` followed by `make verify-streamlit` from the repository root.
 
 ## Verified database contract
 
@@ -59,13 +64,13 @@ Three synchronized two-session races each produced exactly one valid winner: the
 - A named `roster_capacity_exceeded` trigger conflict returned the friendly roster-capacity message without a write, while an unrelated trigger failure retained the generic 500 response.
 - Unknown routes returned 404, wrong methods returned 405, invalid CSRF returned 403, logout was POST-only, and the session cookie was cleared.
 - Five static walkthrough browser checks confirmed the no-backend disclosure, no external runtime requests, all four scenario names and the primary evidence path in the 1440 by 900 opening, zero automated WCAG A or AA violations, Arrow key plus Home and End tab behavior, repository visual provenance, and 320 CSS-pixel reflow.
-- Four Playwright pages received automated axe scans. The login test also checked visible keyboard focus, and a fifth separate test checked 320 CSS-pixel reflow.
+- Four Playwright pages received automated axe scans. The login test also checked visible keyboard focus, role navigation exposes the current page, report tables expose labeled keyboard-scroll regions, and a separate test checked 320 CSS-pixel reflow.
 
 Automated accessibility checks do not replace manual assistive-technology testing. A screen-reader pass remains outside the completed checks.
 
 ## Manual browser and visual checks
 
-The local application was inspected on August 13, 2026 after a fresh Docker fixture started on a dedicated test port.
+The local application was regenerated and inspected on August 18, 2026 after a fresh Docker fixture started on a dedicated test port.
 
 - Riley Bennett's dashboard exposed both Player and Coach navigation.
 - The equipment view rendered 11 requirement cards, including 2 complete cards, with no page-level horizontal overflow at desktop width.
@@ -85,6 +90,12 @@ The static walkthrough was inspected separately in Chrome at 1440 by 900, 375 by
 - The walkthrough console contained no warning or error entries during the inspected flow.
 
 A full manual keyboard traversal, an actual 400 percent browser-zoom session, and a screen-reader session were not performed. The 320 CSS-pixel inspection is narrow-width reflow evidence, not a substitute for those checks. Automated axe results and the checks above do not establish assistive-technology compatibility.
+
+Before describing accessibility as complete, perform and record these manual checks in a real browser:
+
+- Traverse login, navigation, search, forms, tables, and sign-out with keyboard only. Confirm focus order, visible focus, skip-link behavior, and that every action is reachable without a pointer.
+- Test browser zoom at 400 percent and confirm the application remains usable without clipped controls or page-level horizontal scrolling. Scoped table scrolling is acceptable when the table region is labeled and keyboard focusable.
+- Test the login, dashboard, equipment, coach, and reports flows with VoiceOver or another screen reader. Confirm headings, navigation state, form labels, status/error announcements, table headers, and the static-demo boundary are understandable.
 
 ## Generated evidence
 

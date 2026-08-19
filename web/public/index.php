@@ -89,8 +89,8 @@ function handle_post_routes(string $page): void
 
     if ($page === 'player-join-sport') {
         require_role('Player');
-        join_sport(current_person_id(), (int) ($_POST['sport_id'] ?? 0));
-        set_flash('Sport registration saved.');
+        $message = join_sport(current_person_id(), (int) ($_POST['sport_id'] ?? 0));
+        set_flash($message, str_contains($message, 'saved') ? 'success' : 'error');
         redirect($page);
     }
 
@@ -227,19 +227,39 @@ function player_order_equipment(): void
             '<div><dt>Status</dt><dd>' . h($requirement['FulfillmentStatus']) . '</dd></div>' .
             '</dl>';
 
+        $history = equipment_order_history_for_player(
+            current_person_id(),
+            (int) $requirement['TeamID'],
+            (int) $requirement['SportID'],
+            (int) $requirement['ItemID']
+        );
+        $content .= '<section class="order-history" aria-labelledby="order-history-' . h($requirement['TeamID'] . '-' . $requirement['ItemID']) . '">' .
+            '<h3 id="order-history-' . h($requirement['TeamID'] . '-' . $requirement['ItemID']) . '">Order history</h3>';
+        if ($history === []) {
+            $content .= '<p class="hint">No orders recorded yet.</p>';
+        } else {
+            $content .= '<div class="table-wrap" role="region" aria-label="Scrollable order history" tabindex="0"><table><thead><tr><th scope="col">Date</th><th scope="col">Size</th><th scope="col">Quantity</th></tr></thead><tbody>';
+            foreach ($history as $order) {
+                $content .= '<tr><td>' . h($order['OrderedAt']) . '</td><td>' . h($order['SizeLabel']) . '</td><td>' . h($order['Quantity']) . '</td></tr>';
+            }
+            $content .= '</tbody></table></div>';
+        }
+        $content .= '</section>';
+
         $sizeSelect = '<select name="size_label" required>';
         foreach (equipment_sizes((int) $requirement['ItemID']) as $size) {
             $sizeSelect .= '<option value="' . h($size['SizeLabel']) . '">' . h($size['SizeLabel']) . '</option>';
         }
         $sizeSelect .= '</select>';
         $defaultQuantity = max(1, (int) $requirement['OutstandingQuantity']);
+        $actionLabel = $requirement['FulfillmentStatus'] === 'Complete' ? 'Add another order' : 'Add order';
         $content .= '<form method="post" class="inline-form">' . hidden_page('player-order-equipment') .
             '<input type="hidden" name="team_id" value="' . h($requirement['TeamID']) . '">' .
             '<input type="hidden" name="sport_id" value="' . h($requirement['SportID']) . '">' .
             '<input type="hidden" name="item_id" value="' . h($requirement['ItemID']) . '">' .
             '<label>Size ' . $sizeSelect . '</label>' .
             '<label>Quantity <input type="number" min="1" name="quantity" value="' . h($defaultQuantity) . '" required></label>' .
-            '<button type="submit">Add order</button></form></section>';
+            '<button type="submit">' . h($actionLabel) . '</button></form></section>';
     }
     if ($requirements === []) {
         $content .= '<p class="empty">No required equipment is available for your teams.</p>';
@@ -288,10 +308,41 @@ function coach_teams_page(): void
 function coach_add_player_page(): void
 {
     require_role('Coach');
-    $content = '<form method="post">' . hidden_page('coach-add-player') .
-        '<label>Player PersonID <input type="number" name="player_id" min="1" required></label>' .
-        '<label>TeamID <input type="number" name="team_id" min="1" required></label>' .
-        '<button type="submit">Add player</button></form>';
+    $groups = [];
+    foreach (coach_add_player_options(current_person_id()) as $row) {
+        $teamId = (string) $row['TeamID'];
+        if (!isset($groups[$teamId])) {
+            $groups[$teamId] = [
+                'TeamID' => $row['TeamID'],
+                'TeamName' => $row['TeamName'],
+                'SportName' => $row['SportName'],
+                'players' => [],
+            ];
+        }
+        if ($row['PlayerID'] !== null) {
+            $groups[$teamId]['players'][] = $row;
+        }
+    }
+
+    $content = '<p class="hint">Choose a player who is registered for the team sport and is not already on that team.</p>';
+    foreach ($groups as $group) {
+        $content .= '<section class="selection-panel"><h2>' . h($group['TeamName']) . '</h2>';
+        $content .= '<p class="hint">' . h($group['SportName']) . '</p>';
+        if ($group['players'] === []) {
+            $content .= '<p class="empty">No eligible unrostered players are available.</p></section>';
+            continue;
+        }
+        $content .= '<form method="post">' . hidden_page('coach-add-player') .
+            '<input type="hidden" name="team_id" value="' . h($group['TeamID']) . '">' .
+            '<label>Player for ' . h($group['TeamName']) . ' <select name="player_id" required><option value="">Choose a player</option>';
+        foreach ($group['players'] as $player) {
+            $content .= '<option value="' . h($player['PlayerID']) . '">' . h($player['PlayerName']) . '</option>';
+        }
+        $content .= '</select></label><button type="submit">Add player</button></form></section>';
+    }
+    if ($groups === []) {
+        $content .= '<p class="empty">You are not assigned to any teams.</p>';
+    }
     render_page('Add Player To Team', $content);
 }
 
@@ -322,21 +373,49 @@ function admin_create_team_page(): void
 function admin_assign_coach_page(): void
 {
     require_role('Admin');
-    $content = '<form method="post">' . hidden_page('admin-assign-coach') .
-        '<label>Coach PersonID <input type="number" name="coach_id" min="1" required></label>' .
-        '<label>TeamID <input type="number" name="team_id" min="1" required></label>' .
-        '<label>Role <select name="coach_role"><option>Head Coach</option><option>Assistant Coach</option></select></label>' .
-        '<button type="submit">Assign coach</button></form>';
+    $groups = [];
+    foreach (admin_assign_coach_options() as $row) {
+        $teamId = (string) $row['TeamID'];
+        if (!isset($groups[$teamId])) {
+            $groups[$teamId] = [
+                'TeamID' => $row['TeamID'],
+                'TeamName' => $row['TeamName'],
+                'SportName' => $row['SportName'],
+                'coaches' => [],
+            ];
+        }
+        $groups[$teamId]['coaches'][] = $row;
+    }
+
+    $content = '<p class="hint">Only coaches eligible for each team sport are listed.</p>';
+    foreach ($groups as $group) {
+        $content .= '<section class="selection-panel"><h2>' . h($group['TeamName']) . '</h2>';
+        $content .= '<p class="hint">' . h($group['SportName']) . '</p>';
+        $content .= '<form method="post">' . hidden_page('admin-assign-coach') .
+            '<input type="hidden" name="team_id" value="' . h($group['TeamID']) . '">' .
+            '<label>Coach for ' . h($group['TeamName']) . ' <select name="coach_id" required><option value="">Choose a coach</option>';
+        foreach ($group['coaches'] as $coach) {
+            $label = $coach['CoachName'];
+            if ($coach['CurrentRole'] !== null) {
+                $label .= ' (' . $coach['CurrentRole'] . ')';
+            }
+            $content .= '<option value="' . h($coach['CoachID']) . '">' . h($label) . '</option>';
+        }
+        $content .= '</select></label>' .
+            '<label>Role <select name="coach_role"><option>Head Coach</option><option>Assistant Coach</option></select></label>' .
+            '<button type="submit">Assign coach</button></form></section>';
+    }
     render_page('Assign Coach', $content);
 }
 
 function admin_reports_page(): void
 {
     require_role('Admin');
-    $content = '<h2>Most popular sports</h2>' . table_for(report_popular_sports()) .
-        '<h2>Players on most teams</h2>' . table_for(report_players_most_teams()) .
-        '<h2>Coaches with most teams</h2>' . table_for(report_coaches_most_teams()) .
-        '<h2>Average fee per player-team</h2>' . table_for(report_average_fee()) .
-        '<h2>Top ten equipment items</h2>' . table_for(report_top_equipment());
+    $content = '<p class="hint">These reports summarize the fictional seed data. Counts describe rows in the current fixture, and estimated value is units ordered multiplied by catalog unit price.</p>' .
+        '<h2>Most popular sports</h2><p class="report-definition">Players registered for each sport.</p>' . table_for(report_popular_sports()) .
+        '<h2>Players on most teams</h2><p class="report-definition">Roster memberships per player.</p>' . table_for(report_players_most_teams()) .
+        '<h2>Coaches with most teams</h2><p class="report-definition">Team assignments per coach.</p>' . table_for(report_coaches_most_teams()) .
+        '<h2>Average fee per player-team</h2><p class="report-definition">Average amount owed across player-team fee rows.</p>' . table_for(report_average_fee()) .
+        '<h2>Top ten equipment items</h2><p class="report-definition">Units ordered and estimated catalog value from the fictional fixture.</p>' . table_for(report_top_equipment());
     render_page('Admin Analytics Reports', $content);
 }

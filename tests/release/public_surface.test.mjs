@@ -91,6 +91,14 @@ test('hype, filler, vague links, and em dashes are rejected', async () => {
   );
 });
 
+test('the required Streamlit boundary label uses plain punctuation while other em dashes remain rejected', async () => {
+  const requiredLabel = 'Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.';
+  assert.deepEqual(await scanFixture(`${requiredLabel}\n`), []);
+
+  const findings = await scanFixture('A different public sentence — with an em dash.\n');
+  assert.deepEqual(findings.map(({ code }) => code), ['plain-language']);
+});
+
 test('missing local Markdown links are rejected', async () => {
   const findings = await scanFixture('[Schema](docs/missing.md)\n');
 

@@ -4,6 +4,8 @@ vendor/
 node_modules/
 coverage/
 test-results/
+__pycache__/
+.streamlit-venv/
 *.log
 demo/*.png
 demo/*.jpg

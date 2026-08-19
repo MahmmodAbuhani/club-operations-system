@@ -15,6 +15,7 @@
     "erd": "mmdc -i docs/erd.mmd -o docs/erd.svg -b transparent",
     "social-preview": "node scripts/build_social_preview.mjs",
     "test:release": "node --test tests/release/*.test.mjs",
+    "test:streamlit": "playwright test --config=playwright.streamlit.config.js tests/e2e/streamlit.spec.js",
     "walkthrough:serve": "node scripts/serve_walkthrough.mjs",
     "test:walkthrough": "playwright test --config=playwright.walkthrough.config.js",
     "test:a11y": "playwright test tests/e2e/accessibility.spec.js",

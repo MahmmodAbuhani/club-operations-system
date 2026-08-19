@@ -1,7 +1,16 @@
-.PHONY: up verify verify-db verify-http verify-image verify-release evidence erd social-preview logs down
+.PHONY: up verify verify-db verify-http verify-image verify-release evidence erd social-preview logs down fixture-snapshot verify-streamlit
 
 up:
 	docker compose up --build -d
+
+fixture-snapshot:
+	scripts/export_fixture_snapshot.sh
+	python3 scripts/validate_fixture_snapshot.py demo/fixture_snapshot.json
+
+verify-streamlit:
+	python3 scripts/validate_fixture_snapshot.py demo/fixture_snapshot.json
+	python3 -m unittest discover -s tests/python -p 'test_*.py'
+	npm run test:streamlit
 
 verify:
 	scripts/verify.sh

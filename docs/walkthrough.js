@@ -11,6 +11,7 @@ const fields = {
   limitation: document.querySelector('#scenario-limitation'),
   evidence: document.querySelector('#scenario-evidence'),
   image: document.querySelector('#scenario-image'),
+  imageLink: document.querySelector('#scenario-image-link'),
   caption: document.querySelector('#scenario-caption'),
   hash: document.querySelector('#scenario-hash')
 };
@@ -46,6 +47,8 @@ function selectScenario(index, moveFocus = false) {
   fields.limitation.textContent = scenario.limitation;
   fields.image.src = `./${scenario.visual.src}`;
   fields.image.alt = scenario.visual.alt;
+  fields.imageLink.href = `./${scenario.visual.src}`;
+  fields.imageLink.setAttribute('aria-label', `Open full-size image: ${scenario.visual.caption}`);
   fields.caption.textContent = scenario.visual.caption;
   fields.hash.textContent = scenario.visual.sha256;
   progress.textContent = `Scenario ${index + 1} of ${scenarios.length}`;

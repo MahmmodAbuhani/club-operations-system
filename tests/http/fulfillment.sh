@@ -43,5 +43,7 @@ grep -Fq 'Equipment Fulfillment' "$response_file"
 grep -Fq 'Socks' "$response_file"
 grep -Fq 'Outstanding quantity' "$response_file"
 grep -Fq '>2<' "$response_file"
+grep -Fq 'Order history' "$response_file"
+grep -Fq 'Add another order' "$response_file"
 
 printf 'PASS: Riley sees cumulative equipment fulfillment and outstanding quantity.\n'

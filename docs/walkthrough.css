@@ -439,6 +439,23 @@ h1 {
   font-size: 0.78rem;
 }
 
+.full-size-link {
+  display: inline-flex;
+  margin-top: 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42rem 0.7rem;
+  color: var(--accent-dark);
+  font-size: 0.78rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.full-size-link:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
 .hash-line {
   display: block;
   margin-top: 0.55rem;
