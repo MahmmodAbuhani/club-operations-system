@@ -81,7 +81,7 @@ test('walkthrough is explicit about its static boundary and loads no remote runt
     ...html.matchAll(/<(?:script|link)\b[^>]+(?:src|href)=["']([^"']+)["']/giu)
   ].map((match) => match[1]);
 
-  assert.match(html, /Interactive evidence walkthrough/u);
+  assert.match(html, /Static evidence walkthrough/u);
   assert.match(html, /Static page, no live backend/u);
   assert.match(html, /does not connect to the PHP\/MySQL application/u);
   assert.doesNotMatch(html, /<form\b|<input\b|<iframe\b/iu);

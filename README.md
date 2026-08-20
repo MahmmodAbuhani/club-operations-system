@@ -6,29 +6,29 @@ Welcome to Club Operations System. I built it to examine a practical systems que
 
 Club Operations System is a local PHP 8.3 and MySQL 8.0 reference system for a fictional sports program. It places core rules in relational constraints, indexes, triggers, views, and least-privilege grants, then exercises those rules through role-aware application flows. Synchronized SQL races test final-slot, head-coach, and uniform-number contention; HTTP suites test authorization and state preservation; Playwright captures authentic fixture screens and checks accessibility and reflow. The repository includes an ERD, reproducible evidence commands, deterministic fictional data, and a read-only Streamlit companion over a sanitized fixture. Its static evidence walkthrough is hosted on GitHub Pages; the PHP/MySQL application remains local and is not operated as a production service. The project is not affiliated with Liverpool FC or any real organization.
 
-![Club Operations System social preview pairing the local system summary with a fictional equipment fulfillment capture](docs/social-preview.png)
-
-The preview is built from an authenticated local fixture capture. Its source and regeneration path are recorded in [`docs/SOCIAL_PREVIEW.md`](docs/SOCIAL_PREVIEW.md).
-
 ## 90-second guide
 
-Open the [static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. Then open the [live interactive Python demo](https://club-operations-demo.streamlit.app/) over the same fictional data and select a sport to recalculate its read-only views. Use the [Streamlit companion guide](docs/STREAMLIT_DEMO.md) for its source and local verification path. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
+Open the [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. Then open the [Interactive Python demo](https://club-operations-demo.streamlit.app/) over the same fictional data and select a sport to recalculate its read-only views. Use the [Streamlit companion guide](docs/STREAMLIT_DEMO.md) for its source and local verification path. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
 
 | Time | Follow the evidence |
 |---|---|
 | 0-15 seconds | Choose one current path: [`Role authorization`](tests/http/roles.sh), [`Roster concurrency`](tests/sql/concurrency.sh), [`Equipment fulfillment`](tests/http/fulfillment.sh), or [`Invariant handling`](docs/INVARIANTS.md). Scan the full [`relational model`](docs/erd.svg) for context. |
-| 15-30 seconds | Open the [live Python demo](https://club-operations-demo.streamlit.app/), select a sport, and inspect the recalculated roster, equipment, staffing, and fee views. |
+| 15-30 seconds | Open the [Interactive Python demo](https://club-operations-demo.streamlit.app/), select a sport, and inspect the recalculated roster, equipment, staffing, and fee views. |
 | 30-50 seconds | Inspect the capacity trigger in [`sql/01_schema.sql`](sql/01_schema.sql), the synchronized races in [`tests/sql/concurrency.sh`](tests/sql/concurrency.sh), and the role denials in [`tests/http/roles.sh`](tests/http/roles.sh). |
 | 50-65 seconds | Open the authentic [`interface evidence`](docs/SCREENSHOTS.md) and its [`visual hash ledger`](docs/VISUAL_HASHES.md). |
 | 65-90 seconds | Review the [`verification workflow`](.github/workflows/ci.yml), run `make verify` and `make verify-image`, then check the [`data and rights contract`](docs/DATA.md), [`security policy`](SECURITY.md), and [limits](#limits-data-rights-and-security). |
+
+![Club Operations System social preview pairing the local system summary with a fictional equipment fulfillment capture](docs/social-preview.png)
+
+The preview is built from an authenticated local fixture capture. Its source and regeneration path are recorded in [`docs/SOCIAL_PREVIEW.md`](docs/SOCIAL_PREVIEW.md).
 
 To reproduce the complete local check, run `make verify`. The command rebuilds isolated databases and exercises schema rules, contention, application authorization, negative mutations, and automated accessibility checks.
 
 ## Public demo boundary
 
-The [GitHub Pages walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is the public, no-account demo. It is a static HTML, CSS, and JavaScript evidence layer that links the system's rules to source files, tests, diagrams, and authentic fixture captures. It does not connect to PHP, MySQL, or a visitor's data.
+The [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is the public, no-account demo. It is a static HTML, CSS, and JavaScript evidence layer that links the system's rules to source files, tests, diagrams, and authentic fixture captures. It does not connect to PHP, MySQL, or a visitor's data.
 
-The [live Streamlit companion](https://club-operations-demo.streamlit.app/) and its [guide](docs/STREAMLIT_DEMO.md) document the read-only interactive Python view. It uses the committed sanitized fixture snapshot and is clearly labeled `Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.`
+The [Interactive Python demo](https://club-operations-demo.streamlit.app/) and its [guide](docs/STREAMLIT_DEMO.md) document the read-only interactive Python view. It uses the committed sanitized fixture snapshot and is clearly labeled `Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.`
 
 The full application is reproducible locally with Docker. That boundary is intentional: the public demo shows how the system works, while the local runtime provides the executable forms, database writes, authorization checks, and concurrency tests.
 
@@ -64,7 +64,7 @@ Database guarantees apply to ordinary writes through the `sportlfc` runtime prin
 - **Portable release checks:** [`scripts/scan_public_surface.mjs`](scripts/scan_public_surface.mjs) uses Node standard-library modules to check public copy, local links, image files, schema-to-ERD agreement, and private-path or institutional-email residue.
 - **Workflow automation:** [`.github/workflows/ci.yml`](.github/workflows/ci.yml) uses SHA-pinned actions, read-only repository permissions, concurrency cancellation, and a bounded timeout. It is configured to run the complete verification command on pushes and pull requests.
 
-## Run it locally
+## Run the PHP/MySQL system locally
 
 ### Prerequisites
 
@@ -111,8 +111,8 @@ Run the read-only Python companion with the steps in [`docs/STREAMLIT_DEMO.md`](
 | Local verification | [`docs/VALIDATION.md`](docs/VALIDATION.md) records the dated environment, commands, and outcomes. |
 | Generated artifacts | [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md), [`docs/SOCIAL_PREVIEW.md`](docs/SOCIAL_PREVIEW.md), and [`docs/erd.svg`](docs/erd.svg) each have a source and regeneration path. |
 | Continuous integration | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) defines the complete verification job for pushes and pull requests; [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted outcomes by commit. |
-| Static deployment | The [interactive evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is hosted by GitHub Pages from `main` `/docs`. The PHP/MySQL application remains local and is not a hosted service. |
-| Python companion | The [live Streamlit demo](https://club-operations-demo.streamlit.app/) runs the fixture-backed interactive view; the [guide](docs/STREAMLIT_DEMO.md) documents its local verification path. |
+| Static deployment | The [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is hosted by GitHub Pages from `main` `/docs`. The PHP/MySQL application remains local and is not a hosted service. |
+| Python companion | The [Interactive Python demo](https://club-operations-demo.streamlit.app/) runs the fixture-backed interactive view; the [guide](docs/STREAMLIT_DEMO.md) documents its local verification path. |
 | Production operation | No production users, real data, reliability record, or incident-response record exists. |
 
 ## Architecture
