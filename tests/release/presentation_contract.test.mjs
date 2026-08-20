@@ -78,6 +78,49 @@ test('README provides an authored abstract, proof route, evidence labels, and cl
   assert.doesNotMatch(readme, /^## Additional experience$/mu);
 });
 
+test('README puts the first-minute route before the social preview and synchronizes demo labels', async () => {
+  const readme = await readPublicFile('README.md');
+  const walkthrough = await readPublicFile('docs/index.html');
+  const streamlitGuide = await readPublicFile('docs/STREAMLIT_DEMO.md');
+  const guideIndex = readme.indexOf('## 90-second guide');
+  const previewIndex = readme.indexOf('![Club Operations System social preview');
+
+  assert.ok(guideIndex >= 0, 'README must include the 90-second guide');
+  assert.ok(previewIndex >= 0, 'README must include the social preview');
+  assert.ok(guideIndex < previewIndex, 'the first-minute route must precede the social preview');
+  assert.match(readme, /interactive Python demo/iu);
+  assert.doesNotMatch(readme, /live interactive Python demo/iu);
+  assert.match(walkthrough, /Interactive Python demo/u);
+  assert.match(streamlitGuide, /Open the \[Interactive Python demo\]/u);
+});
+
+test('public demo links use the working canonical Streamlit route', async () => {
+  const canonicalUrl = 'https://club-operations-system-demo.streamlit.app/';
+  const retiredUrl = 'https://club-operations-demo.streamlit.app/';
+  const markdownPaths = ['README.md', 'docs/STREAMLIT_DEMO.md', 'docs/VALIDATION.md'];
+  const markdownSurfaces = await Promise.all(
+    markdownPaths.map(async (relativePath) => [relativePath, await readPublicFile(relativePath)])
+  );
+
+  for (const [relativePath, markdown] of markdownSurfaces) {
+    const hrefs = markdownLinks(markdown).map(({ href }) => href);
+    assert.ok(hrefs.includes(canonicalUrl), `${relativePath} must link to the canonical demo`);
+    assert.equal(hrefs.includes(retiredUrl), false, `${relativePath} must not link to the retired demo`);
+  }
+
+  const walkthrough = await readPublicFile('docs/index.html');
+  const walkthroughHrefs = [...walkthrough.matchAll(/href=["']([^"']+)["']/gu)].map(
+    ([, href]) => href
+  );
+
+  assert.ok(walkthroughHrefs.includes(canonicalUrl), 'walkthrough must link to the canonical demo');
+  assert.equal(
+    walkthroughHrefs.includes(retiredUrl),
+    false,
+    'walkthrough must not link to the retired demo'
+  );
+});
+
 test('README routes visitors to the hosted walkthrough instead of repository source', async () => {
   const readme = await readPublicFile('README.md');
   const guide = markdownSection(readme, '90-second guide');
@@ -93,9 +136,8 @@ test('README routes visitors to the hosted walkthrough instead of repository sou
     true,
     'the recruiter route must open the hosted static walkthrough'
   );
-  assert.match(guide, /static evidence walkthrough/u);
+  assert.match(guide, /Static evidence walkthrough/u);
   assert.match(guide, /GitHub Pages/u);
-  assert.match(guide, /live interactive Python demo/u);
   assert.match(guide, /select a sport/u);
   assert.doesNotMatch(guide, /GitHub Pages is not enabled/u);
   assert.doesNotMatch(guide, /artifact is not hosted/u);
