@@ -94,6 +94,33 @@ test('README puts the first-minute route before the social preview and synchroni
   assert.match(streamlitGuide, /Open the \[Interactive Python demo\]/u);
 });
 
+test('public demo links use the working canonical Streamlit route', async () => {
+  const canonicalUrl = 'https://club-operations-system-demo.streamlit.app/';
+  const retiredUrl = 'https://club-operations-demo.streamlit.app/';
+  const markdownPaths = ['README.md', 'docs/STREAMLIT_DEMO.md', 'docs/VALIDATION.md'];
+  const markdownSurfaces = await Promise.all(
+    markdownPaths.map(async (relativePath) => [relativePath, await readPublicFile(relativePath)])
+  );
+
+  for (const [relativePath, markdown] of markdownSurfaces) {
+    const hrefs = markdownLinks(markdown).map(({ href }) => href);
+    assert.ok(hrefs.includes(canonicalUrl), `${relativePath} must link to the canonical demo`);
+    assert.equal(hrefs.includes(retiredUrl), false, `${relativePath} must not link to the retired demo`);
+  }
+
+  const walkthrough = await readPublicFile('docs/index.html');
+  const walkthroughHrefs = [...walkthrough.matchAll(/href=["']([^"']+)["']/gu)].map(
+    ([, href]) => href
+  );
+
+  assert.ok(walkthroughHrefs.includes(canonicalUrl), 'walkthrough must link to the canonical demo');
+  assert.equal(
+    walkthroughHrefs.includes(retiredUrl),
+    false,
+    'walkthrough must not link to the retired demo'
+  );
+});
+
 test('README routes visitors to the hosted walkthrough instead of repository source', async () => {
   const readme = await readPublicFile('README.md');
   const guide = markdownSection(readme, '90-second guide');
