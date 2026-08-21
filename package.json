@@ -22,7 +22,7 @@
     "evidence": "playwright test tests/e2e/evidence.spec.js"
   },
   "devDependencies": {
-    "@axe-core/playwright": "4.12.1",
+    "@axe-core/playwright": "4.13.0",
     "@mermaid-js/mermaid-cli": "11.16.0",
     "@playwright/test": "1.62.1"
   }
