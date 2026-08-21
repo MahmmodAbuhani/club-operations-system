@@ -121,6 +121,18 @@ test('public demo links use the working canonical Streamlit route', async () => 
   );
 });
 
+test('Streamlit availability wording accounts for inactivity sleep state', async () => {
+  const readme = await readPublicFile('README.md');
+  const guide = await readPublicFile('docs/STREAMLIT_DEMO.md');
+  for (const [label, text] of [['README', readme], ['Streamlit guide', guide]]) {
+    assert.match(
+      text,
+      /may be asleep after inactivity[\s\S]*wake it back up/u,
+      `${label} must explain the hosted companion sleep state and wake action`
+    );
+  }
+});
+
 test('README routes visitors to the hosted walkthrough instead of repository source', async () => {
   const readme = await readPublicFile('README.md');
   const guide = markdownSection(readme, '90-second guide');

@@ -4,7 +4,7 @@ Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.
 
 This companion gives visitors a read-only, browser-based view of the same fictional club operations data. It loads [`demo/fixture_snapshot.json`](../demo/fixture_snapshot.json), applies pure Python transformations from [`demo/streamlit_data.py`](../demo/streamlit_data.py), and renders roster capacity, equipment fulfillment, staffing, and fee summaries.
 
-Open the [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) to inspect the fixture-backed view in a browser without local setup. The main-content sport filter is visible on desktop and mobile; changing it recalculates every read-only view.
+Open the [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) to inspect the fixture-backed view in a browser without local setup. The hosted companion may be asleep after inactivity. If Streamlit shows its sleep screen, choose “Yes, get this app back up!” to wake it back up, then wait for the read-only view to load. The main-content sport filter is visible on desktop and mobile; changing it recalculates every read-only view.
 
 The snapshot is exported from [`sql/01_schema.sql`](../sql/01_schema.sql) and [`sql/02_seed.sql`](../sql/02_seed.sql). It contains display names and operational values only; credentials, phone numbers, guardian names, and birth dates are not included. The companion does not connect to MySQL, submit mutations, or represent the PHP application as a hosted service.
 

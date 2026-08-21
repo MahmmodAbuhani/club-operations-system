@@ -8,7 +8,7 @@ Club Operations System is a local PHP 8.3 and MySQL 8.0 reference system for a f
 
 ## 90-second guide
 
-Open the [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. Then open the [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) over the same fictional data and select a sport to recalculate its read-only views. Use the [Streamlit companion guide](docs/STREAMLIT_DEMO.md) for its source and local verification path. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
+Open the [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. Then open the [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) over the same fictional data and select a sport to recalculate its read-only views. The hosted companion may be asleep after inactivity. If Streamlit shows its sleep screen, choose “Yes, get this app back up!” to wake it back up, then wait for the read-only view to load. Use the [Streamlit companion guide](docs/STREAMLIT_DEMO.md) for its source and local verification path. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
 
 | Time | Follow the evidence |
 |---|---|
@@ -28,7 +28,7 @@ To reproduce the complete local check, run `make verify`. The command rebuilds i
 
 The [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is the public, no-account demo. It is a static HTML, CSS, and JavaScript evidence layer that links the system's rules to source files, tests, diagrams, and authentic fixture captures. It does not connect to PHP, MySQL, or a visitor's data.
 
-The [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) and its [guide](docs/STREAMLIT_DEMO.md) document the read-only interactive Python view. It uses the committed sanitized fixture snapshot and is clearly labeled `Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.`
+The [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) and its [guide](docs/STREAMLIT_DEMO.md) document the read-only interactive Python view. The hosted companion may be asleep after inactivity. If Streamlit shows its sleep screen, choose “Yes, get this app back up!” to wake it back up, then wait for the read-only view to load. It uses the committed sanitized fixture snapshot and is clearly labeled `Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.`
 
 The full application is reproducible locally with Docker. That boundary is intentional: the public demo shows how the system works, while the local runtime provides the executable forms, database writes, authorization checks, and concurrency tests.
 
