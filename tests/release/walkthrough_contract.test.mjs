@@ -81,13 +81,13 @@ test('walkthrough publishes canonical and social metadata with authentic project
   const canonicalUrl = 'https://mahmmodabuhani.github.io/club-operations-system/';
   const previewUrl = `${canonicalUrl}social-preview.png`;
 
-  assert.match(html, new RegExp(`<link rel="canonical" href="${canonicalUrl}"`, 'u'));
+  assert.ok(html.includes(`<link rel="canonical" href="${canonicalUrl}"`));
   assert.match(html, /<meta property="og:type" content="website">/u);
-  assert.match(html, new RegExp(`<meta property="og:url" content="${canonicalUrl}">`, 'u'));
-  assert.match(html, new RegExp(`<meta property="og:image" content="${previewUrl}">`, 'u'));
+  assert.ok(html.includes(`<meta property="og:url" content="${canonicalUrl}">`));
+  assert.ok(html.includes(`<meta property="og:image" content="${previewUrl}">`));
   assert.match(html, /<meta property="og:image:alt" content="[^"]+">/u);
   assert.match(html, /<meta name="twitter:card" content="summary_large_image">/u);
-  assert.match(html, new RegExp(`<meta name="twitter:image" content="${previewUrl}">`, 'u'));
+  assert.ok(html.includes(`<meta name="twitter:image" content="${previewUrl}">`));
   assert.match(html, /<link rel="icon" href="\.\/favicon\.svg" type="image\/svg\+xml">/u);
   assert.equal(await exists('docs/social-preview.png'), true);
 });
