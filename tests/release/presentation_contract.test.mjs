@@ -36,6 +36,15 @@ function markdownLinks(markdown) {
   );
 }
 
+function streamlitWakeInstructions(markdown) {
+  return markdown
+    .split(/\n\s*\n/u)
+    .filter(
+      (paragraph) =>
+        /may be asleep after inactivity/u.test(paragraph) && /wake it back up/u.test(paragraph)
+    );
+}
+
 test('public package metadata uses the intended repository identity', async () => {
   const packageJson = JSON.parse(await readPublicFile('package.json'));
 
@@ -76,6 +85,22 @@ test('README provides an authored abstract, proof route, evidence labels, and cl
   assert.ok(markdownSection(readme, 'Limits, data, rights, and security'));
   assert.ok(markdownSection(readme, 'Intended use'));
   assert.doesNotMatch(readme, /^## Additional experience$/mu);
+});
+
+test('README consolidates runtime boundaries in one concise Project scope section', async () => {
+  const readme = await readPublicFile('README.md');
+  const abstract = markdownSection(readme, 'Abstract');
+  const scope = markdownSection(readme, 'Project scope');
+  const affiliationStatements = readme.match(/not affiliated with Liverpool FC/gu) ?? [];
+
+  assert.ok(scope, 'README must include a Project scope section');
+  assert.match(scope, /GitHub Pages[\s\S]*static/iu);
+  assert.match(scope, /Streamlit[\s\S]*fixture-backed[\s\S]*read-only/iu);
+  assert.match(scope, /PHP\/MySQL[\s\S]*local/iu);
+  assert.match(scope, /not operated as a production service/iu);
+  assert.equal(affiliationStatements.length, 1, 'README must contain one non-affiliation statement');
+  assert.doesNotMatch(abstract, /Liverpool FC/iu);
+  assert.equal(markdownSection(readme, 'Public demo boundary'), '');
 });
 
 test('README puts the first-minute route before the social preview and synchronizes demo labels', async () => {
@@ -124,19 +149,27 @@ test('public demo links use the working canonical Streamlit route', async () => 
 test('Streamlit availability wording accounts for inactivity sleep state', async () => {
   const readme = await readPublicFile('README.md');
   const guide = await readPublicFile('docs/STREAMLIT_DEMO.md');
-  for (const [label, text] of [['README', readme], ['Streamlit guide', guide]]) {
-    assert.match(
-      text,
-      /may be asleep after inactivity[\s\S]*wake it back up/u,
-      `${label} must explain the hosted companion sleep state and wake action`
-    );
-  }
+  const readmeInstructions = streamlitWakeInstructions(readme);
+  const detailedGuideInstructions = streamlitWakeInstructions(guide);
+
+  assert.equal(
+    readmeInstructions.length,
+    1,
+    'README must give exactly one public Streamlit sleep and wake instruction'
+  );
+  assert.match(markdownSection(readme, '90-second guide'), /wake it back up/u);
+  assert.ok(
+    detailedGuideInstructions.length >= 1,
+    'Streamlit guide must retain detailed sleep and wake instructions'
+  );
 });
 
 test('README routes visitors to the hosted walkthrough instead of repository source', async () => {
   const readme = await readPublicFile('README.md');
   const guide = markdownSection(readme, '90-second guide');
   const links = markdownLinks(guide);
+  const guideOpening = guide.split(/\n\s*\n/u)[0];
+  const guideOpeningWords = guideOpening.split(/\s+/u).filter(Boolean).length;
 
   assert.equal(
     links.some(({ href }) => href === 'docs/index.html'),
@@ -144,10 +177,13 @@ test('README routes visitors to the hosted walkthrough instead of repository sou
     'the recruiter route must not open the walkthrough source file in GitHub'
   );
   assert.equal(
-    links.some(({ href }) => href === 'https://mahmmodabuhani.github.io/club-operations-system/'),
+    links.some(
+      ({ href }) => href === 'https://mahmmodabuhani.github.io/club-operations-system/#scenarios'
+    ),
     true,
-    'the recruiter route must open the hosted static walkthrough'
+    'the recruiter route must open the hosted walkthrough at its scenarios'
   );
+  assert.ok(guideOpeningWords <= 90, `guide opening has ${guideOpeningWords} words`);
   assert.match(guide, /Static evidence walkthrough/u);
   assert.match(guide, /GitHub Pages/u);
   assert.match(guide, /select a sport/u);

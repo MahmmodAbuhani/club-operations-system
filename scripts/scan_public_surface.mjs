@@ -33,7 +33,7 @@ const COPY_POLICIES = [
   {
     code: 'internal-wording',
     message: 'publication-process wording is not part of the public project narrative',
-    pattern: /\b(?:agents?|agentic(?: workers?)?|owner[- ]approval|(?:publisher|publication|publishing|release) gate|gate status|recruiter(?:-facing)?|reviewers?(?:['’]s)?)\b/i
+    pattern: /\b(?:agents?|agentic(?: workers?)?|owner[- ]approval|owner(?:['’]s)? (?:browser session|request)|(?:publisher|publication|publishing|release) gate|release[- ]hardening|gate status|recruiter(?:-facing)?|reviewers?(?:['’]s)?|worktree)\b/i
   },
   {
     code: 'hype',

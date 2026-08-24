@@ -419,7 +419,8 @@ h1 {
 .visual-frame {
   display: grid;
   min-height: 21rem;
-  place-items: center;
+  max-height: 42rem;
+  place-items: start center;
   overflow: hidden;
   border: 1px solid #c8d3da;
   border-radius: 0.8rem;
@@ -429,8 +430,7 @@ h1 {
 .visual-frame img {
   display: block;
   width: 100%;
-  max-height: 34rem;
-  object-fit: contain;
+  height: auto;
 }
 
 .scenario-visual figcaption {
@@ -441,19 +441,22 @@ h1 {
 
 .full-size-link {
   display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
   margin-top: 0.7rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--accent);
   border-radius: 999px;
-  padding: 0.42rem 0.7rem;
-  color: var(--accent-dark);
-  font-size: 0.78rem;
+  padding: 0.62rem 0.9rem;
+  background: var(--accent);
+  color: white;
+  font-size: 0.84rem;
   font-weight: 750;
   text-decoration: none;
 }
 
 .full-size-link:hover {
-  border-color: var(--accent);
-  background: var(--accent-soft);
+  border-color: var(--accent-dark);
+  background: var(--accent-dark);
 }
 
 .hash-line {
@@ -605,6 +608,7 @@ footer a {
 
   .visual-frame {
     min-height: 12rem;
+    max-height: 30rem;
   }
 }
 

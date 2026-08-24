@@ -72,6 +72,10 @@ test('internal publication wording variants are rejected', async () => {
     'Agents prepared this package.',
     'The release gate is pending.',
     'The publication gate is pending.',
+    'This is the release-hardening candidate.',
+    'Verification ran from a release-hardening worktree.',
+    'The active owner browser session remained open.',
+    "The traversal stopped at the owner's request.",
     'Reviewers prepared this package.',
     'Owner-approval is pending.'
   ]) {
