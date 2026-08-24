@@ -128,19 +128,19 @@ test('public demo links use the working canonical Streamlit route', async () => 
   );
 
   for (const [relativePath, markdown] of markdownSurfaces) {
-    const hrefs = markdownLinks(markdown).map(({ href }) => href);
-    assert.ok(hrefs.includes(canonicalUrl), `${relativePath} must link to the canonical demo`);
-    assert.equal(hrefs.includes(retiredUrl), false, `${relativePath} must not link to the retired demo`);
+    const hrefs = new Set(markdownLinks(markdown).map(({ href }) => href));
+    assert.equal(hrefs.has(canonicalUrl), true, `${relativePath} must link to the canonical demo`);
+    assert.equal(hrefs.has(retiredUrl), false, `${relativePath} must not link to the retired demo`);
   }
 
   const walkthrough = await readPublicFile('docs/index.html');
-  const walkthroughHrefs = [...walkthrough.matchAll(/href=["']([^"']+)["']/gu)].map(
-    ([, href]) => href
+  const walkthroughHrefs = new Set(
+    [...walkthrough.matchAll(/href=["']([^"']+)["']/gu)].map(([, href]) => href)
   );
 
-  assert.ok(walkthroughHrefs.includes(canonicalUrl), 'walkthrough must link to the canonical demo');
+  assert.equal(walkthroughHrefs.has(canonicalUrl), true, 'walkthrough must link to the canonical demo');
   assert.equal(
-    walkthroughHrefs.includes(retiredUrl),
+    walkthroughHrefs.has(retiredUrl),
     false,
     'walkthrough must not link to the retired demo'
   );

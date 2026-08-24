@@ -128,14 +128,35 @@ function markdownReferences(markdown) {
 }
 
 function githubHeadingSlug(heading) {
-  return heading
+  const normalized = heading
     .normalize('NFC')
     .trim()
-    .toLowerCase()
-    .replace(/<[^>]+>/g, '')
-    .replace(/[^\p{L}\p{N}\s-]/gu, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
+    .toLowerCase();
+  let slug = '';
+  let insideTag = false;
+  let previousWasSeparator = false;
+
+  for (const character of normalized) {
+    if (character === '<') {
+      insideTag = true;
+      continue;
+    }
+    if (character === '>' && insideTag) {
+      insideTag = false;
+      continue;
+    }
+    if (insideTag) continue;
+
+    if (/^[\p{L}\p{N}]$/u.test(character)) {
+      slug += character;
+      previousWasSeparator = false;
+    } else if ((character === '-' || /^\s$/u.test(character)) && !previousWasSeparator) {
+      slug += '-';
+      previousWasSeparator = true;
+    }
+  }
+
+  return slug;
 }
 
 async function markdownHasAnchor(filePath, anchor) {

@@ -76,7 +76,7 @@ The local PHP/MySQL fixture was started from an isolated local checkout. A keybo
 
 This pass did **not** complete the entire manual accessibility checklist. Sign-out activation was not finished. An actual 400 percent browser-zoom session was attempted but was not completed, so it is not counted as evidence. A VoiceOver session was started but not completed. No VoiceOver compatibility result is claimed.
 
-Automated evidence from the same revision remains separate: all 36 release-contract tests, all 5 walkthrough browser tests, all 8 local application accessibility tests, the complete eight-stage `make verify`, the multi-architecture image check, 9 Python Streamlit tests, 2 Streamlit browser tests, and the public-surface scanner passed. The Streamlit browser test includes a signed-out Soccer-filter recalculation. These results do not replace the outstanding manual zoom, sign-out, or screen-reader checks.
+Automated evidence from the same revision remains separate: all 37 release-contract tests, all 5 walkthrough browser tests, all 8 local application accessibility tests, the complete eight-stage `make verify`, the multi-architecture image check, 9 Python Streamlit tests, 2 Streamlit browser tests, and the public-surface scanner passed. The Streamlit browser test includes a signed-out Soccer-filter recalculation. These results do not replace the outstanding manual zoom, sign-out, or screen-reader checks.
 
 ### August 18 and 19 evidence refresh
 

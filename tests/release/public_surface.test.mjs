@@ -118,6 +118,15 @@ test('Markdown anchors decode and normalize expected whitespace before matching'
   assert.deepEqual(findings, []);
 });
 
+test('Markdown anchors normalize inline tags and repeated separators in one pass', async () => {
+  const findings = await scanFixture(
+    '[Schema](docs/target.md#data-contract)\n',
+    { 'docs/target.md': '## <span>Data</span>  -- contract\n' }
+  );
+
+  assert.deepEqual(findings, []);
+});
+
 test('malformed encoded Markdown anchors fail as broken links', async () => {
   const findings = await scanFixture(
     '[Schema](docs/target.md#data%ZZcontract)\n',
