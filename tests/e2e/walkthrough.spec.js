@@ -75,7 +75,11 @@ test('scenario tabs support keyboard selection and preserve evidence provenance'
   await expect(page.locator('#scenario-image')).toHaveAttribute('src', './erd.svg');
   await expect(page.locator('#scenario-image')).toHaveAttribute('alt', /Entity relationship diagram/u);
   await expect(page.locator('#scenario-image-link')).toHaveAttribute('href', './erd.svg');
-  await expect(page.locator('#scenario-image-link')).toContainText('Open full-size image');
+  await expect(page.locator('#scenario-image-link')).toContainText('Open full evidence image');
+  await expect(page.locator('#scenario-image-link')).toHaveCSS(
+    'background-color',
+    'rgb(21, 94, 117)'
+  );
   await expect(page.locator('#scenario-hash')).toHaveText(/^[a-f0-9]{64}$/u);
   await expect(page.locator('#scenario-evidence a')).toHaveCount(4);
 

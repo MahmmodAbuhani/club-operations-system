@@ -1,6 +1,6 @@
 # Validation record
 
-This verification record began with an isolated local checkout on August 11, 2026 and was refreshed on August 19, 2026 after the public workflow, accessibility, evidence, and Streamlit surfaces were repaired and the complete native verification command was rerun. The [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted verification by commit, and the [static evidence walkthrough is hosted on GitHub Pages](https://mahmmodabuhani.github.io/club-operations-system/). The PHP/MySQL system remains local. Local checks and static hosting do not establish a production operating record. Later code changes require a new exact-revision verification before their results are described as current.
+This verification record began with an isolated local checkout on August 11, 2026, was refreshed on August 19 after the public workflow, accessibility, evidence, and Streamlit surfaces were repaired, and was refreshed again on August 24 for revision-scoped verification. The [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted verification by commit, and the [static evidence walkthrough is hosted on GitHub Pages](https://mahmmodabuhani.github.io/club-operations-system/). The PHP/MySQL system remains local. Local checks and static hosting do not establish a production operating record. Later code changes require a new exact-revision verification before their results are described as current.
 
 ## Environment
 
@@ -11,7 +11,7 @@ This verification record began with an isolated local checkout on August 11, 202
 | Pinned MySQL image | MySQL 8.0.46 OCI index with `linux/amd64` and `linux/arm64/v8` manifests |
 | Pinned PHP image | PHP 8.3.33 with Apache |
 | Node.js / npm | 26.3.0 / 11.16.0 locally; CI targets Node 22 |
-| Playwright / axe | 1.62.1 / 4.12.1 |
+| Playwright / axe | 1.62.1 / 4.13.0 |
 | Mermaid CLI | 11.16.0 from `package-lock.json` |
 | Python / Streamlit | Python 3.13.7 / Streamlit 1.62.0 in the isolated companion QA environment |
 
@@ -23,7 +23,7 @@ The MySQL and PHP images were resolved by immutable digest. `make verify-image` 
 make verify
 ```
 
-On August 19, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs eight dependency-ordered stages:
+On August 24, 2026 the command exited successfully with `Club Operations System complete verification passed.` It performs eight dependency-ordered stages:
 
 1. Compose validation, PHP lint, all repository shell-script syntax checks, and public-surface assertions.
 2. Lockfile install, exact Chromium availability, dependency audit, and the portable release-contract tests discovered from `tests/release/*.test.mjs`, including the static walkthrough release contracts.
@@ -70,6 +70,16 @@ Automated accessibility checks do not replace manual assistive-technology testin
 
 ## Manual browser and visual checks
 
+### August 24 revision-scoped refresh
+
+The local PHP/MySQL fixture was started from an isolated local checkout. A keyboard-only pass in Safari confirmed visible focus and usable focus order through fixture login, the complete role-based navigation, player search and filtered results, Join Sport, equipment-order controls, Add Player, and the labeled table regions. The Pages scenario tabs and their Arrow, Home, and End behavior were also exercised in the browser suite and inspected separately. The local search changed from the full fixture list to the three Soccer teams using only keyboard input.
+
+This pass did **not** complete the entire manual accessibility checklist. Sign-out activation was not finished. An actual 400 percent browser-zoom session was attempted but was not completed, so it is not counted as evidence. A VoiceOver session was started but not completed. No VoiceOver compatibility result is claimed.
+
+Automated evidence from the same revision remains separate: all 36 release-contract tests, all 5 walkthrough browser tests, all 8 local application accessibility tests, the complete eight-stage `make verify`, the multi-architecture image check, 9 Python Streamlit tests, 2 Streamlit browser tests, and the public-surface scanner passed. The Streamlit browser test includes a signed-out Soccer-filter recalculation. These results do not replace the outstanding manual zoom, sign-out, or screen-reader checks.
+
+### August 18 and 19 evidence refresh
+
 The local application was regenerated and inspected on August 18, 2026 after a fresh Docker fixture started on a dedicated test port.
 
 - Riley Bennett's dashboard exposed both Player and Coach navigation.
@@ -89,7 +99,7 @@ The static walkthrough was inspected separately in Chrome at 1440 by 900, 375 by
 - At 375 and 320 CSS pixels, the document had no page-level horizontal overflow. At 320 CSS pixels, the scenario labels had no clipped text.
 - The walkthrough console contained no warning or error entries during the inspected flow.
 
-A full manual keyboard traversal, an actual 400 percent browser-zoom session, and a screen-reader session were not performed. The 320 CSS-pixel inspection is narrow-width reflow evidence, not a substitute for those checks. Automated axe results and the checks above do not establish assistive-technology compatibility.
+A full manual keyboard traversal, an actual 400 percent browser-zoom session, and a screen-reader session remain incomplete. The 320 CSS-pixel inspection is narrow-width reflow evidence, not a substitute for those checks. Automated axe results and the checks above do not establish assistive-technology compatibility.
 
 Before describing accessibility as complete, perform and record these manual checks in a real browser:
 

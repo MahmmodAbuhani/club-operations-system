@@ -4,19 +4,19 @@ Welcome to Club Operations System. I built it to examine a practical systems que
 
 ## Abstract
 
-Club Operations System is a local PHP 8.3 and MySQL 8.0 reference system for a fictional sports program. It places core rules in relational constraints, indexes, triggers, views, and least-privilege grants, then exercises those rules through role-aware application flows. Synchronized SQL races test final-slot, head-coach, and uniform-number contention; HTTP suites test authorization and state preservation; Playwright captures authentic fixture screens and checks accessibility and reflow. The repository includes an ERD, reproducible evidence commands, deterministic fictional data, and a read-only Streamlit companion over a sanitized fixture. Its static evidence walkthrough is hosted on GitHub Pages; the PHP/MySQL application remains local and is not operated as a production service. The project is not affiliated with Liverpool FC or any real organization.
+Club Operations System is a PHP 8.3 and MySQL 8.0 reference system for a fictional sports program. It places core rules in relational constraints, indexes, triggers, views, and least-privilege grants, then exercises them through role-aware application flows. Synchronized SQL races test final-slot, head-coach, and uniform-number contention; HTTP suites test authorization and state preservation; Playwright captures authentic fixture screens and checks accessibility and reflow. The repository includes an ERD, reproducible evidence commands, deterministic fictional data, and public evidence companions, while the application runtime remains local.
 
 ## 90-second guide
 
-Open the [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/), hosted on GitHub Pages, to choose among four evidence scenarios. The page is an interactive evidence layer, not the live PHP/MySQL application. Then open the [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) over the same fictional data and select a sport to recalculate its read-only views. The hosted companion may be asleep after inactivity. If Streamlit shows its sleep screen, choose “Yes, get this app back up!” to wake it back up, then wait for the read-only view to load. Use the [Streamlit companion guide](docs/STREAMLIT_DEMO.md) for its source and local verification path. Use the paths below for direct source inspection, or run `npm run walkthrough:serve` to inspect the same artifact locally.
+Start with the [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/#scenarios) on GitHub Pages and choose one of four scenarios. Then open the [Interactive Python demo](https://club-operations-system-demo.streamlit.app/), select a sport, and inspect the recalculated read-only views. The hosted companion may be asleep after inactivity. If Streamlit shows its sleep screen, choose “Yes, get this app back up!” to wake it back up, then wait for the read-only view to load. The [Streamlit companion guide](docs/STREAMLIT_DEMO.md) documents its source and local verification path.
 
 | Time | Follow the evidence |
 |---|---|
-| 0-15 seconds | Choose one current path: [`Role authorization`](tests/http/roles.sh), [`Roster concurrency`](tests/sql/concurrency.sh), [`Equipment fulfillment`](tests/http/fulfillment.sh), or [`Invariant handling`](docs/INVARIANTS.md). Scan the full [`relational model`](docs/erd.svg) for context. |
+| 0-15 seconds | Open the [hosted scenarios](https://mahmmodabuhani.github.io/club-operations-system/#scenarios) and choose Role authorization, Roster concurrency, Equipment fulfillment, or Invariant handling. |
 | 15-30 seconds | Open the [Interactive Python demo](https://club-operations-system-demo.streamlit.app/), select a sport, and inspect the recalculated roster, equipment, staffing, and fee views. |
 | 30-50 seconds | Inspect the capacity trigger in [`sql/01_schema.sql`](sql/01_schema.sql), the synchronized races in [`tests/sql/concurrency.sh`](tests/sql/concurrency.sh), and the role denials in [`tests/http/roles.sh`](tests/http/roles.sh). |
 | 50-65 seconds | Open the authentic [`interface evidence`](docs/SCREENSHOTS.md) and its [`visual hash ledger`](docs/VISUAL_HASHES.md). |
-| 65-90 seconds | Review the [`verification workflow`](.github/workflows/ci.yml), run `make verify` and `make verify-image`, then check the [`data and rights contract`](docs/DATA.md), [`security policy`](SECURITY.md), and [limits](#limits-data-rights-and-security). |
+| 65-90 seconds | Review the [`verification workflow`](.github/workflows/ci.yml), run `make verify` and `make verify-image`, then check the [project scope](#project-scope), [`data and rights contract`](docs/DATA.md), and [`security policy`](SECURITY.md). |
 
 ![Club Operations System social preview pairing the local system summary with a fictional equipment fulfillment capture](docs/social-preview.png)
 
@@ -24,13 +24,13 @@ The preview is built from an authenticated local fixture capture. Its source and
 
 To reproduce the complete local check, run `make verify`. The command rebuilds isolated databases and exercises schema rules, contention, application authorization, negative mutations, and automated accessibility checks.
 
-## Public demo boundary
+## Project scope
 
-The [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is the public, no-account demo. It is a static HTML, CSS, and JavaScript evidence layer that links the system's rules to source files, tests, diagrams, and authentic fixture captures. It does not connect to PHP, MySQL, or a visitor's data.
+- **GitHub Pages:** The [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is a no-account HTML, CSS, and JavaScript layer over fixed repository evidence. It has no application backend and does not collect visitor data.
+- **Streamlit:** The [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) is a fixture-backed, read-only companion over the committed sanitized snapshot, not the PHP/MySQL runtime. Its [guide](docs/STREAMLIT_DEMO.md) documents the source and verification path.
+- **Local PHP/MySQL:** The PHP/MySQL application remains local. Docker provides the executable forms, database writes, authorization checks, and concurrency tests; it is not operated as a production service.
 
-The [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) and its [guide](docs/STREAMLIT_DEMO.md) document the read-only interactive Python view. The hosted companion may be asleep after inactivity. If Streamlit shows its sleep screen, choose “Yes, get this app back up!” to wake it back up, then wait for the read-only view to load. It uses the committed sanitized fixture snapshot and is clearly labeled `Interactive Python demo: fixture-backed, not the PHP/MySQL runtime.`
-
-The full application is reproducible locally with Docker. That boundary is intentional: the public demo shows how the system works, while the local runtime provides the executable forms, database writes, authorization checks, and concurrency tests.
+The fictional project retains the `sportlfc` lineage in internal identifiers but is not affiliated with Liverpool FC or any real organization.
 
 ## What the system protects
 
@@ -111,7 +111,7 @@ Run the read-only Python companion with the steps in [`docs/STREAMLIT_DEMO.md`](
 | Local verification | [`docs/VALIDATION.md`](docs/VALIDATION.md) records the dated environment, commands, and outcomes. |
 | Generated artifacts | [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md), [`docs/SOCIAL_PREVIEW.md`](docs/SOCIAL_PREVIEW.md), and [`docs/erd.svg`](docs/erd.svg) each have a source and regeneration path. |
 | Continuous integration | [`.github/workflows/ci.yml`](.github/workflows/ci.yml) defines the complete verification job for pushes and pull requests; [GitHub Actions history](https://github.com/MahmmodAbuhani/club-operations-system/actions/workflows/ci.yml) records hosted outcomes by commit. |
-| Static deployment | The [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is hosted by GitHub Pages from `main` `/docs`. The PHP/MySQL application remains local and is not a hosted service. |
+| Static deployment | The [Static evidence walkthrough](https://mahmmodabuhani.github.io/club-operations-system/) is hosted by GitHub Pages from `main` `/docs`. |
 | Python companion | The [Interactive Python demo](https://club-operations-system-demo.streamlit.app/) runs the fixture-backed interactive view; the [guide](docs/STREAMLIT_DEMO.md) documents its local verification path. |
 | Production operation | No production users, real data, reliability record, or incident-response record exists. |
 
@@ -134,7 +134,7 @@ The application receives ordinary data access through the limited runtime princi
 ## Limits, data, rights, and security
 
 - **Fictional data:** [`sql/02_seed.sql`](sql/02_seed.sql) is a deterministic, hand-authored fixture. Names are demonstration identities, email addresses use `.test`, and phone numbers use fictional 555 values. [`docs/DATA.md`](docs/DATA.md) records the full data contract.
-- **Local application:** The PHP/MySQL application does not collect payments, send messages, manage real minors' data, or expose a hosted service. Set `SPORTLFC_COOKIE_SECURE=1` only when serving it through HTTPS.
+- **Local application:** The PHP/MySQL application does not collect payments, send messages, or manage real minors' data. Set `SPORTLFC_COOKIE_SECURE=1` only when serving it through HTTPS.
 - **Accessibility boundary:** Automated checks do not replace a screen-reader pass, 400 percent zoom inspection, or a full keyboard walkthrough. These manual checks remain separate from the executable suite.
 - **Security reporting:** When the repository's Security tab offers **Report a vulnerability**, use that private form. Do not place undisclosed security details, credentials, or real personal data in a public issue. See [`SECURITY.md`](SECURITY.md).
 - **Rights:** The fixture, documentation, Mermaid source, generated ERD, deterministic outputs, and local-fixture screenshots are repository-authored material covered by the repository license. No trademark or real-club affiliation rights are asserted or granted.
@@ -145,4 +145,4 @@ Unless a file states otherwise, the [MIT License](LICENSE) applies to repository
 
 ## Intended use
 
-Club Operations System is intended for inspection of relational integrity, concurrency behavior, least-privilege access, and role-aware application boundaries. The static walkthrough is deployed as an evidence layer; the PHP/MySQL application is not a deployed service or evidence of production operation. Start with the [`invariant matrix`](docs/INVARIANTS.md), then run `make verify` to reproduce the executable checks against a fresh fictional fixture.
+Club Operations System is intended for inspection of relational integrity, concurrency behavior, least-privilege access, and role-aware application boundaries. Start with the [`invariant matrix`](docs/INVARIANTS.md), then run `make verify` to reproduce the executable checks against a fresh fictional fixture.

@@ -13,6 +13,7 @@ const requiredFiles = [
   'docs/walkthrough.css',
   'docs/walkthrough-data.js',
   'docs/walkthrough.js',
+  'docs/favicon.svg',
   'docs/.nojekyll'
 ];
 
@@ -75,10 +76,27 @@ test('walkthrough visuals match repository provenance', async () => {
   }
 });
 
+test('walkthrough publishes canonical and social metadata with authentic project evidence', async () => {
+  const html = await readFile(path.join(docsRoot, 'index.html'), 'utf8');
+  const canonicalUrl = 'https://mahmmodabuhani.github.io/club-operations-system/';
+  const previewUrl = `${canonicalUrl}social-preview.png`;
+
+  assert.ok(html.includes(`<link rel="canonical" href="${canonicalUrl}"`));
+  assert.match(html, /<meta property="og:type" content="website">/u);
+  assert.ok(html.includes(`<meta property="og:url" content="${canonicalUrl}">`));
+  assert.ok(html.includes(`<meta property="og:image" content="${previewUrl}">`));
+  assert.match(html, /<meta property="og:image:alt" content="[^"]+">/u);
+  assert.match(html, /<meta name="twitter:card" content="summary_large_image">/u);
+  assert.ok(html.includes(`<meta name="twitter:image" content="${previewUrl}">`));
+  assert.match(html, /<link rel="icon" href="\.\/favicon\.svg" type="image\/svg\+xml">/u);
+  assert.equal(await exists('docs/social-preview.png'), true);
+});
+
 test('walkthrough is explicit about its static boundary and loads no remote runtime assets', async () => {
   const html = await readFile(path.join(docsRoot, 'index.html'), 'utf8');
   const runtimeReferences = [
-    ...html.matchAll(/<(?:script|link)\b[^>]+(?:src|href)=["']([^"']+)["']/giu)
+    ...html.matchAll(/<script\b[^>]+src=["']([^"']+)["']/giu),
+    ...html.matchAll(/<link\b(?=[^>]*rel=["']stylesheet["'])[^>]+href=["']([^"']+)["']/giu)
   ].map((match) => match[1]);
 
   assert.match(html, /Static evidence walkthrough/u);
