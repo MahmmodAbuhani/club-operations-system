@@ -226,6 +226,16 @@ test('validation record describes the complete eight-stage verification path', a
   assert.match(validation, /320 CSS-pixel walkthrough reflow/u);
 });
 
+test('validation record separates automated and manual evidence without a completeness claim', async () => {
+  const validation = await readPublicFile('docs/VALIDATION.md');
+
+  assert.match(validation, /^## Automated verification$/mu);
+  assert.match(validation, /^## Manual browser and visual checks$/mu);
+  assert.doesNotMatch(validation, /accessibility (?:is )?complete/iu);
+  assert.match(validation, /actual 400 percent browser zoom/iu);
+  assert.match(validation, /keyboard-only sign-out/iu);
+});
+
 test('security policy routes private reports without promising production support', async () => {
   const policy = await readPublicFile('SECURITY.md');
   const plainPolicy = policy.replace(/[*_`]/gu, '');
