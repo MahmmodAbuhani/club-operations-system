@@ -17,7 +17,9 @@ This verification record began with an isolated local checkout on August 11, 202
 
 The MySQL and PHP images were resolved by immutable digest. `make verify-image` inspected the MySQL registry index at its pinned digest and found both required platform manifests. The local Docker execution used the host's ARM64 image; registry inspection did not execute the AMD64 image. The dependency tree was installed from `package-lock.json`; the offline local npm audit, using locally cached advisory data, reported zero known vulnerabilities in the locked dependency tree.
 
-## Complete command
+## Automated verification
+
+### Complete command
 
 ```bash
 make verify
@@ -72,11 +74,11 @@ Automated accessibility checks do not replace manual assistive-technology testin
 
 ### August 24 revision-scoped refresh
 
-The local PHP/MySQL fixture was started from an isolated local checkout. A keyboard-only pass in Safari confirmed visible focus and usable focus order through fixture login, the complete role-based navigation, player search and filtered results, Join Sport, equipment-order controls, Add Player, and the labeled table regions. The Pages scenario tabs and their Arrow, Home, and End behavior were also exercised in the browser suite and inspected separately. The local search changed from the full fixture list to the three Soccer teams using only keyboard input.
+The local PHP/MySQL fixture was started from an isolated local checkout. A keyboard-only sign-out check reached the visible Sign out control, activated it without pointer input, returned to the login page, kept the password field empty, and did not restore a usable authenticated page through protected-route or Back navigation. This scoped pass does not establish broader accessibility or assistive-technology compatibility.
 
-This pass did **not** complete the entire manual accessibility checklist. Sign-out activation was not finished. An actual 400 percent browser-zoom session was attempted but was not completed, so it is not counted as evidence. A VoiceOver session was started but not completed. No VoiceOver compatibility result is claimed.
+At actual 400 percent browser zoom, all Pages opening, scenario-navigation, evidence-panel, and full-evidence-image rows passed. Local Login, Dashboard/navigation, Join Sport, Add Player, Reports, and Sign out also passed. Local Player Search had unexpected scoped result-table scrolling where the checklist said not applicable, and the local Equipment form's selected size was not visibly legible at 400 percent. No page-level horizontal scrolling was observed. Only report tables retained checklist-allowed scoped scrolling inside labeled keyboard-focusable regions. The overall actual 400 percent browser zoom check therefore remains incomplete.
 
-Automated evidence from the same revision remains separate: all 37 release-contract tests, all 5 walkthrough browser tests, all 8 local application accessibility tests, the complete eight-stage `make verify`, the multi-architecture image check, 9 Python Streamlit tests, 2 Streamlit browser tests, and the public-surface scanner passed. The Streamlit browser test includes a signed-out Soccer-filter recalculation. These results do not replace the outstanding manual zoom, sign-out, or screen-reader checks.
+Automated evidence from the same revision remains separate: all 38 release-contract tests, five walkthrough browser tests, eight local application accessibility tests, the complete eight-stage `make verify`, the multi-architecture image check, nine Python Streamlit tests, two Streamlit browser tests, and the public-surface scanner passed. The Streamlit browser test includes a signed-out Soccer-filter recalculation. These results do not replace the incomplete manual zoom check or the outstanding screen-reader check. A VoiceOver session remains incomplete and outside this task's requested manual scope; no VoiceOver compatibility result is claimed.
 
 ### August 18 and 19 evidence refresh
 
