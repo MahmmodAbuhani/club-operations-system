@@ -1,4 +1,4 @@
-FROM php:8.3-apache@sha256:e3994e4bd3c982544ddd38a454b144a43d1947673869dd14689f76d5ec52911b
+FROM php:8.4-apache@sha256:51da594c844a97f31b1cd6b1ac6660982f40788f4fe13e75f7fd39e2f9b58651
 
 RUN docker-php-ext-install pdo_mysql
 
